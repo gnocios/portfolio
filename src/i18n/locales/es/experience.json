@@ -1,0 +1,49 @@
+{
+  "title": "Experiencia Profesional",
+  "jobs": [
+    {
+      "position": "Asistente de Arquitecto de Software",
+      "company": "TechSoft",
+      "date": "Enero 2024 – Septiembre 2025",
+      "details": [
+        "Diseño y evolución de arquitectura SaaS B2B multitenant en entornos Laravel + Vue.",
+        "Optimización de bases de datos MySQL mediante indexación estratégica y caching, mejorando rendimiento general en un 35%.",
+        "Colaboración directa con CTO en definición de roadmap técnico y decisiones de escalabilidad."
+      ]
+    },
+    {
+      "position": "Desarrollador Full Stack",
+      "company": "TechSoft",
+      "date": "Febrero 2023 – Diciembre 2023",
+      "details": [
+        "Desarrollo y mantenimiento de aplicaciones empresariales con Laravel, Vue.js e Inertia.js.",
+        "Diseño de estructuras de base de datos en MySQL optimizadas, reduciendo tiempos de consulta en un 30%.",
+        "Automatización de procesos de despliegue, disminuyendo tiempos de release en un 60%.",
+        "Implementación de autenticación avanzada y notificaciones en tiempo real.",
+        "Mentoría a desarrolladores junior y participación activa en decisiones de arquitectura."
+      ]
+    },
+    {
+      "position": "Instructor / Tutor Técnico",
+      "company": "Coderhouse",
+      "date": "Marzo 2022 – Diciembre 2022",
+      "details": [
+        "Tutoría y acompañamiento técnico a más de 80 estudiantes en cursos de Desarrollo Web y JavaScript.",
+        "Resolución de dudas técnicas, revisión de proyectos y evaluación de entregas.",
+        "Mejora en tasa de finalización del curso mediante seguimiento personalizado y soporte técnico continuo."
+      ]
+    },
+    {
+      "position": "Desarrollador Frontend Junior",
+      "company": "Codigo Web",
+      "date": "Enero 2021 – Febrero 2022",
+      "details": [
+        "Desarrollo de interfaces web utilizando Vue.js y JavaScript moderno (ES6+).",
+        "Implementación de componentes reutilizables y consumo de APIs REST.",
+        "Optimización de rendimiento en frontend, reduciendo tiempos de carga en un 20%.",
+        "Colaboración en equipos ágiles (Scrum), participando en code reviews y planificación de sprints.",
+        "Aplicación de principios de diseño responsivo y mejora de experiencia de usuario."
+      ]
+    }
+  ]
+}

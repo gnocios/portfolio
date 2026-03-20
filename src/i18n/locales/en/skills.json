@@ -1,0 +1,43 @@
+{
+  "title": "Skills & Expertise",
+  "categories": [
+    {
+      "title": "Full Stack Web Development",
+      "description": "Comprehensive development of modern web applications, combining frontend and backend with a focus on SaaS B2B multitenant systems and full product management. Experienced in database optimization, scalable architecture, and deployment automation.",
+      "techStack": {
+        "Frontend": ["React", "Vue.js", "Inertia.js", "JavaScript", "HTML5", "CSS3", "TailwindCSS"],
+        "Backend": ["Laravel", "Node.js", "PHP", "Python", "SQL"],
+        "Databases": ["MySQL (optimization, indexing, multitenant design)"],
+        "Methodologies & Best Practices": ["OOP", "SOLID", "Scrum", "Kanban"]
+      }
+    },
+    {
+      "title": "Mobile Development",
+      "description": "Development of cross-platform and native mobile applications, integrating scalable architecture and optimized user experience.",
+      "techStack": {
+        "Mobile": ["React Native", "Android (Kotlin)", "Java", "Kotlin"]
+      }
+    },
+    {
+      "title": "DevOps & Deployment",
+      "description": "Setup of CI/CD pipelines, automated deployments, and environment management to ensure efficiency, stability, and successful Go-Live.",
+      "techStack": {
+        "Tools": ["Git", "GitHub", "Docker", "AWS", "Azure", "Linux"]
+      }
+    },
+    {
+      "title": "Architecture & Design",
+      "description": "Design and evolution of SaaS B2B, CRM, and multitenant systems, prioritizing scalability, modularity, and operational efficiency.",
+      "techStack": {
+        "Focus": ["Scalable architecture", "Technical planning", "Mentoring", "Product roadmap"]
+      }
+    },
+    {
+      "title": "AI & Emerging Tech",
+      "description": "Implementation of modern solutions using GenAI and LLM models to empower intelligent decision-making.",
+      "techStack": {
+        "Tools": ["OpenAI", "LangChain", "Hugging Face", "LlamaIndex", "Streamlit"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #111;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #111;
+    flex-direction: column;
+    width: 200px;
+    padding: 20px;
+    display: none;
+  }
+
+  .links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* LANGUAJE SWITCHER */
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-current {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  padding: 4px 8px;
+}
+
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 4px;
+  list-style: none;
+  margin: 4px 0 0 0;
+  padding: 0;
+  min-width: 50px;
+  z-index: 50;
+}
+
+.lang-menu li {
+  padding: 6px 10px;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s;
+
+  display: flex;       /* hace flex container */
+  align-items: center; /* centra verticalmente */
+  gap: 6px;            /* espacio entre bandera y texto */
+}
+
+.lang-menu li:hover {
+  background: #555;
+}
+
+.flag-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;      /* evita que se encoja */
+}

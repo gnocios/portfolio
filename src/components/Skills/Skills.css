@@ -1,0 +1,44 @@
+.skills-section {
+  padding: 2rem;
+}
+
+.skills-section .section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.category-item {
+  padding-left: 1rem;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.category-description {
+  margin-bottom: 0.5rem;
+}
+
+.flex-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 16px;
+  background-color: #eee;
+  color: #272822;
+  font-weight: 500;
+  font-size: 0.9rem;
+}

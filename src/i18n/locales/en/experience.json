@@ -1,0 +1,49 @@
+{
+  "title": "Professional Experience",
+  "jobs": [
+    {
+      "position": "Software Architect Assistant",
+      "company": "TechSoft",
+      "date": "January 2024 – September 2025",
+      "details": [
+        "Design and evolution of a multitenant B2B SaaS architecture in Laravel + Vue environments.",
+        "Optimization of MySQL databases through strategic indexing and caching, improving overall performance by 35%.",
+        "Direct collaboration with the CTO in defining the technical roadmap and scalability decisions."
+      ]
+    },
+    {
+      "position": "Full Stack Developer",
+      "company": "TechSoft",
+      "date": "February 2023 – December 2023",
+      "details": [
+        "Development and maintenance of enterprise applications using Laravel, Vue.js, and Inertia.js.",
+        "Design of optimized MySQL database structures, reducing query times by 30%.",
+        "Automation of deployment processes, decreasing release times by 60%.",
+        "Implementation of advanced authentication and real-time notifications.",
+        "Mentoring junior developers and active participation in architecture decisions."
+      ]
+    },
+    {
+      "position": "Instructor / Technical Tutor",
+      "company": "Coderhouse",
+      "date": "March 2022 – December 2022",
+      "details": [
+        "Tutoring and technical guidance for over 80 students in Web Development and JavaScript courses.",
+        "Resolving technical questions, reviewing projects, and evaluating assignments.",
+        "Improved course completion rates through personalized follow-up and continuous technical support."
+      ]
+    },
+    {
+      "position": "Junior Frontend Developer",
+      "company": "Codigo Web",
+      "date": "January 2021 – February 2022",
+      "details": [
+        "Development of web interfaces using Vue.js and modern JavaScript (ES6+).",
+        "Implementation of reusable components and consumption of REST APIs.",
+        "Frontend performance optimization, reducing load times by 20%.",
+        "Collaboration in agile teams (Scrum), participating in code reviews and sprint planning.",
+        "Application of responsive design principles and improvement of user experience."
+      ]
+    }
+  ]
+}

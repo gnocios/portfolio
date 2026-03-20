@@ -1,0 +1,53 @@
+.experience-section {
+  padding: 60px 20px;
+  background-color: #111; /* oscuro portfolio */
+  color: #fff;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.jobs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.job-item {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.job-item:hover {
+  transform: translateY(-5px);
+}
+
+.job-position {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.job-company {
+  font-weight: 400;
+  color: #ccc;
+}
+
+.job-date {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.job-details {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.job-details li {
+  margin-bottom: 6px;
+}

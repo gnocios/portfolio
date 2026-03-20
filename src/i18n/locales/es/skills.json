@@ -1,0 +1,43 @@
+{
+  "title": "Skills & Expertise",
+  "categories": [
+    {
+      "title": "Full Stack Web Development",
+      "description": "Desarrollo completo de aplicaciones web modernas, combinando frontend y backend con enfoque en SaaS B2B multitenant y gestión integral del producto. Experiencia en optimización de bases de datos, arquitectura escalable y automatización de despliegues.",
+      "techStack": {
+        "Frontend": ["React", "Vue.js", "Inertia.js", "JavaScript", "HTML5", "CSS3", "TailwindCSS"],
+        "Backend": ["Laravel", "Node.js", "PHP", "Python", "SQL"],
+        "Bases de Datos": ["MySQL (optimización, indexación, diseño multitenant)"],
+        "Metodologías & Buenas Prácticas": ["OOP", "SOLID", "Scrum", "Kanban"]
+      }
+    },
+    {
+      "title": "Mobile Development",
+      "description": "Desarrollo de aplicaciones móviles multiplataforma y nativas, integrando arquitectura escalable y experiencia de usuario optimizada.",
+      "techStack": {
+        "Mobile": ["React Native", "Android (Kotlin)", "Java", "Kotlin"]
+      }
+    },
+    {
+      "title": "DevOps & Deployment",
+      "description": "Configuración de pipelines CI/CD, despliegues automatizados y gestión de entornos para asegurar eficiencia, estabilidad y Go-Live exitosos.",
+      "techStack": {
+        "Herramientas": ["Git", "GitHub", "Docker", "AWS", "Azure", "Linux"]
+      }
+    },
+    {
+      "title": "Architecture & Design",
+      "description": "Diseño y evolución de sistemas SaaS B2B, CRM y soluciones multitenant, priorizando escalabilidad, modularidad y eficiencia operativa.",
+      "techStack": {
+        "Enfoque": ["Arquitectura escalable", "Planificación técnica", "Mentoría", "Roadmap de producto"]
+      }
+    },
+    {
+      "title": "AI & Emerging Tech",
+      "description": "Aplicación de soluciones modernas con GenAI y modelos LLM para potenciar la toma de decisiones inteligentes.",
+      "techStack": {
+        "Herramientas": ["OpenAI", "LangChain", "Hugging Face", "LlamaIndex", "Streamlit"]
+      }
+    }
+  ]
+}
