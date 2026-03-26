@@ -1,0 +1,85 @@
+{
+  "projects": {
+    "title": "Proyectos",
+    "fullstack": [
+      {
+        "id": 1,
+        "title": "FitProAdmin",
+        "description": "Complete platform for gym and club management, centralizing clients, payments, routines, metrics, members, and follow-ups, with a client app.",
+        "logo": [
+          "projects/fitproadmin/fitproadmin_logo.png"
+        ],
+        "images": [
+          "projects/fitproadmin/fitproadmin_00.jpg",
+          "projects/fitproadmin/fitproadmin_01.jpg",
+          "projects/fitproadmin/fitproadmin_02.jpg",
+          "projects/fitproadmin/fitproadmin_03.jpg"
+        ],
+        "video": "fitproadmin_demo.mp4",
+        "liveLink": "https://fitproadmin.com",
+        "codeLink": "#",
+        "stack": [
+          "Frontend: Vue 3, Inertia.js, TailwindCSS, Vite, Axios, dayjs",
+          "Backend: Laravel 11, Jetstream, Sanctum, MercadoPago DX PHP, Laravel Notifications, Laravel Tinker",
+          "Spatie packages: permission, activitylog, medialibrary, tags",
+          "Multi-tenant: stancl/tenancy",
+          "Others: barryvdh/laravel-dompdf, intervention/image, tightenco/ziggy",
+          "Testing / DevOps: PHPUnit, Mockery, Laravel Pint, Faker"
+        ],
+        "highlights": [
+          "Tailor-made: built from scratch and 100% adapted to the business",
+          "Modular and scalable, designed to grow and adapt to multiple clients",
+          "Full payment and advanced roles integration",
+          "Multitenant architecture completely isolated per client",
+          "Strategic architectural and modular decisions for functionality and maintainability"
+        ],
+        "learnings": [
+          "Design a useful, practical, and sellable SaaS iterating over mistakes and improvements",
+          "Optimize navigation and user experience for complex systems",
+          "Integrate robust third-party packages without reinventing the wheel",
+          "Modularize code and build multitenant architecture for scalability",
+          "Make strategic technical decisions focused on functionality and maintainability",
+          "Create a product that can evolve into derivative micro-SaaS"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Nutrisaas",
+        "description": "MicroSaaS for nutritionists to manage clients, plans, and nutritional follow-ups.",
+        "logo": [
+          "projects/nutrisaas/nutrisaas_logo.png"
+        ],
+        "images": [
+          "projects/nutrisaas/nutrisaas_00.jpg",
+          "projects/nutrisaas/nutrisaas_01.jpg",
+          "projects/nutrisaas/nutrisaas_02.jpg",
+          "projects/nutrisaas/nutrisaas_03.jpg"
+        ],
+        "video": "projects/nutrisaas/nutrisaas_demo.mp4",
+        "liveLink": "https://nutrisaas.com",
+        "codeLink": "#",
+        "stack": [
+          "Frontend: Vue 3, Inertia.js, TailwindCSS, Vite, Axios",
+          "Backend: Laravel 11, Jetstream, Sanctum",
+          "Paquetes Spatie: permission, activitylog",
+          "Testing / DevOps: PHPUnit, Mockery, Laravel Pint"
+        ],
+        "highlights": [
+          "Diseñado específicamente para nutricionistas",
+          "Interfaz ligera, intuitiva y fácil de usar",
+          "Permite gestionar clientes, planes y seguimiento de manera eficiente",
+          "Escalable a micro-SaaS para varios profesionales"
+        ],
+        "learnings": [
+          "Adaptar un SaaS a un nicho específico y crear valor inmediato",
+          "Optimizar la experiencia del usuario para un flujo de trabajo claro",
+          "Aprender sobre modularización y micro-SaaS a pequeña escala",
+          "Integrar funcionalidades de seguimiento y notificaciones efectivas"
+        ]
+      }
+    ],
+    "frontend": [],
+    "backend": [],
+    "mobile": []
+  }
+}

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors, Lizard, Spock</title>
+    <link rel="icon" href="assets/images/slf.svg" type="image/gif" sizes="16x16">
+</head>
+<body class="grid">
+    <div class="main"></div>
+    <h1 class="flex silver" style="font-size: 3em;">Rock Paper Scissors Lizard Spock</h1>
+    
+    <div id="rules" style="display:none" class="flex">
+        <p>Scissors cuts paper<br>
+            Paper covers rock<br>
+            Rock crushes lizard<br>
+            Lizard poisons Spock<br>
+            Spock smashes scissors<br>
+            Scissors decapitates lizard<br>
+            Lizard eats paper<br>
+            Paper disproves Spock<br>
+            Spock vaporizes rock<br>
+            And as it always has, rock crushes scissors</p>
+    </div>
+    <div class="flex">
+        <div class="grid">
+            <div class="flex">
+                <div class="bar1"><div id="mylifes"class="pdg"><span style="padding-left:2em;" class="silver">YOU</span></div></div>
+                <div class="bar2"><div id="pclifes" class="pdg"><span style="padding-right:2em;" class="silver">PC</span></div></div>
+            </div>
+            <div class="flex">
+                <div id="winedRmy"></div>
+                <div id="winedRpc"></div>
+            </div>
+        </div>
+    </div>
+    <div class="flex silver">Round&nbsp;<span id="round"></span></div>
+    <div class="flex silver"><span id="final">Go home if you're not brave... for this is no game...</span>&nbsp;<span id="explain"></span></div>
+    <div id="startmenu">
+        <button onclick="startGame();">Start</button>
+        <button onclick="showRules();" id="showrules">Rules</button>
+        <button onclick="hideRules();" id="hiderules" style="display:none">Rules</button>
+    </div>
+
+    <div class="flex fighters">
+        <div class="fighter"><img id="resultmy" src="assets/images/none.png" alt="fighter"></div>
+        <div class="fighter"><img id="resultpc" src="assets/images/none.png" alt="fighter" class="imgr"></div>
+    </div>
+    
+    
+    <div>
+        <div id="choise" style="display:none">
+            <button onclick="mychoise(this.value);" value="rock">Rock</button>
+            <button onclick="mychoise(this.value);" value="paper">Paper</button>
+            <button onclick="mychoise(this.value);" value="scissors">Scissors</button>
+            <button onclick="mychoise(this.value);" value="lizard">Lizard</button>
+            <button onclick="mychoise(this.value);" value="spock">Spock</button>
+        </div>
+    </div>
+
+    
+<script>
+    var $ = function(o){return document.getElementById(o);}
+    const rock = ["rock", "lizard", "spock","scissors",  "paper" ];
+    const paper = ["paper","rock", "lizard", "spock","scissors"];
+    const scissors = ["scissors","paper","rock", "lizard", "spock"];
+    const spock = ["spock","scissors", "paper", "rock", "lizard"];
+    const lizard = [ "lizard", "spock", "scissors","paper","rock"];
+    const rpsls = {rock:rock, lizard:lizard, spock:spock, scissors:scissors, paper:paper};
+    const explain = ["Scissors cuts paper!", "Paper covers rock!", "Rock crushes lizard!", "Lizard poisons Spock!",
+        "Spock smashes scissors!", "Scissors decapitates lizard!", "Lizard eats paper!", "Paper disproves Spock!",
+        "Spock vaporizes rock!", "Rock crushes scissors!"]
+    var pclifes=5;
+    var mylifes=5;
+    var myvalue;
+    var pcvalue;
+    var actualround=0;
+    var controlend=1;
+    var playing=false;
+    //win sounds..........
+    var excelent = new Audio('assets/sounds/vexcelent.mp3');
+    var outstanding = new Audio('assets/sounds/voutstanding.mp3');
+    var impressive = new Audio('assets/sounds/vimpressive.mp3');
+    var welldone = new Audio('assets/sounds/welldone.mp3');
+    var scream = new Audio('assets/sounds/scream.mp3');
+    var scream1 = new Audio('assets/sounds/scream1.mp3');
+    var scream2 = new Audio('assets/sounds/scream2.mp3');
+    var scream3 = new Audio('assets/sounds/scream3.mp3');
+    var scream4 = new Audio('assets/sounds/scream4.mp3');
+    var scream5 = new Audio('assets/sounds/scream5.mp3');
+    const victoryS = [excelent, outstanding, impressive, welldone, scream, scream1, scream2, scream3, scream4, scream5];
+    //lose sounds..........
+    var llaugh = new Audio('assets/sounds/llaugh.mp3');
+    var laugh = new Audio('assets/sounds/laugh.mp3');
+    var laugh1 = new Audio('assets/sounds/laugh1.mp3');
+    var laugh2 = new Audio('assets/sounds/laugh2.mp3');
+    var laugh3 = new Audio('assets/sounds/laugh3.mp3');
+    var fatality = new Audio('assets/sounds/fatality.mp3');
+    var bruitality = new Audio('assets/sounds/brutality.mp3');
+    var die = new Audio('assets/sounds/ldie.mp3');
+    var toasty = new Audio('assets/sounds/toasty.mp3');
+    const loseS = [llaugh, laugh, laugh1, laugh2, laugh3, fatality, bruitality, die, toasty];
+    //tie sounds..........
+    var llap = new Audio('assets/sounds/livelongandprosper.mp3');
+    //element sounds..........
+    var rockaudio = new Audio('assets/sounds/rock1.mp3');
+    var lizardaudio = new Audio('assets/sounds/lizard.mp3');
+    var spockaudio = new Audio('assets/sounds/spock.mp3');
+    var scissorsaudio = new Audio('assets/sounds/scissors.mp3');
+    var paperaudio = new Audio('assets/sounds/paper.mp3');
+    const elementsS = {rock:rockaudio, lizard:lizardaudio, spock:spockaudio, scissors:scissorsaudio, paper:paperaudio};
+    //game sounds..........
+    var rpslsaudio = new Audio('assets/sounds/rpsls.mp3');
+    var rules = new Audio('assets/sounds/rules.mp3');
+    var youwin = new Audio('assets/sounds/vyou win.mp3');
+    var youlose = new Audio('assets/sounds/lyou lose.mp3');
+    var round1 = new Audio('assets/sounds/round1.mp3');
+    var round2 = new Audio('assets/sounds/round2.mp3');
+    var round3 = new Audio('assets/sounds/round3.mp3');
+    var gameover = new Audio('assets/sounds/game over.mp3');
+    const roundsS = [round1, round2, round3];
+    
+
+    function mychoise(value){
+        if(playing==false){return;}
+        myvalue = value;
+        pcvalue = rock[Math.floor(Math.random()*5)];
+        count=3;
+        wait();
+        playing=false;
+        $("resultpc").src= "assets/images/none.png";
+        $("resultmy").src= "assets/images/"+myvalue+".png";
+        $('final').innerHTML="";
+        $('explain').innerHTML="";
+    }
+
+    function wait(){
+        rpslsaudio.play();
+        setTimeout(result, 2000);
+    }
+
+    function result(){
+        $("resultpc").src= "assets/images/"+pcvalue+".png";
+        
+        let check = rpsls[myvalue];
+        let result = check.indexOf(pcvalue);
+
+        choseS=Math.floor(Math.random()*3);
+        if(result == 0){$("final").innerHTML= "Tied!";$("explain").innerHTML="";llap.play();}
+        else if(result==2 || result==4){
+            $("final").innerHTML= "You Loose!";
+            $("explain").innerHTML=explainR(pcvalue, myvalue);
+            mylifes--;
+            colorBar(0, mylifes);
+            lose(choseS);
+        }
+        else{
+            $("final").innerHTML= "You Win!";
+            pclifes--;
+            colorBar(1, pclifes);
+            win(choseS);
+            $("explain").innerHTML=explainR(myvalue, pcvalue);
+        }
+        
+        if(pclifes==0 || mylifes==0){setTimeout(wonround, 1000);}
+        else{setTimeout(toplay, 1000); }
+             
+    }
+
+    function explainR(value1, value2){
+        let string = String.raw `(\b`+value1+ String.raw `\b)(\s*\w*)*(\b`+value2+ String.raw `\b)`;
+        let regex =  new RegExp(string,'i');
+        for(i=0; i<explain.length; i++){
+            let match = explain[i].search(regex);
+            if(match==0){return explain[i];}
+        }
+    }
+
+    function startGame(){
+        actualround=0;
+        pclifes=5;
+        mylifes=5;
+        controlend=1;
+        actualround++;
+        $('round').innerHTML=actualround;
+        $('winedRmy').innerHTML = "";
+        $('winedRpc').innerHTML = "";
+        $('mylifes').className='pdg';
+        $('pclifes').className='pdg';
+        $("resultpc").src= "assets/images/none.png";
+        $("resultmy").src= "assets/images/none.png";
+        $('choise').style.display="";
+        $('startmenu').style.display="none";
+        roundsS[actualround-1].play();
+        setTimeout(toplay, 1000);
+    }
+
+    function wonround(){
+        if(pclifes==0){ youwin.play();controlend++;$('winedRmy').innerHTML += "*"; }
+        else{youlose.play();controlend--;$('winedRpc').innerHTML += "*" ; }
+        setTimeout(nextround, 2000); 
+    }
+
+    function nextround(){
+        if(actualround==3 || controlend==-1 || controlend==3){gameover.play();$('startmenu').style.display="";$('choise').style.display="none";return;}
+        pclifes=5;
+        mylifes=5;
+        actualround++;
+        $('round').innerHTML=actualround;
+        $('mylifes').className='pdg';
+        $('pclifes').className='pdg';
+        roundsS[actualround-1].play();
+        $("resultpc").src= "assets/images/none.png";
+        $("resultmy").src= "assets/images/none.png";
+        $('final').innerHTML="";
+        $('explain').innerHTML="";
+        setTimeout(toplay, 1000);
+    }
+
+    function win(sound){
+        if(sound>0){victoryS[Math.floor(Math.random()*10)].play();}
+        else{elementsS[myvalue].play();}
+        
+    }
+    function lose(sound){
+        if(sound>0){loseS[Math.floor(Math.random()*9)].play();}
+        else{elementsS[pcvalue].play();}
+    }
+
+    function toplay(){playing=true;}
+
+    function colorBar(bar, amount){
+        if(bar==0){
+            element = $('mylifes');
+            if(amount==4){element.classList.remove('pdg');element.classList.add('pg');}
+            else if(amount==3){element.classList.remove('pg');element.classList.add('py');}
+            else if(amount==2){element.classList.remove('py');element.classList.add('po');}
+            else if(amount==1){element.classList.remove('po');element.classList.add('pr');}
+            else if(amount==0){element.classList.remove('pr')}
+        }else{
+            element=$('pclifes'); 
+            if(amount==4){element.classList.remove('pdg');element.classList.add('ipg');}
+            else if(amount==3){element.classList.remove('ipg');element.classList.add('ipy');}
+            else if(amount==2){element.classList.remove('ipy');element.classList.add('ipo');}
+            else if(amount==1){element.classList.remove('ipo');element.classList.add('ipr');}
+            else if(amount==0){element.classList.remove('ipr');}
+        }
+    }
+
+    function showRules(){
+        rules.play();
+        $('rules').style.display='';
+        $('showrules').style.display='none';
+        $('hiderules').style.display='';
+    }
+
+    function hideRules(){
+        rules.pause();
+        rules.currentTime = 0;
+        $('rules').style.display='none';
+        $('hiderules').style.display='none';
+        $('showrules').style.display='';
+    }
+
+</script>
+<style>
+    body{
+        box-sizing: border-box;
+        height: 100vh;
+        background-image: radial-gradient(rgb(6, 6, 59), black );
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:cover;
+        background-attachment: fixed;
+        color:white;
+        font-family:'Times New Roman', Times, serif;
+        font-size: medium;
+    }
+    .main{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        height: 1px;
+        width: 1px;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 3vw 41vh 0px 1px #fff,45vw -9vh 3px 0px #fff,-35vw 24vh 1px 3px #fff,-21vw -24vh 1px 0px #fff,36vw -39vh 2px 2px #fff,50vw 39vh 1px 0px #fff,18vw -3vh 1px 1px #fff,39vw -31vh 0px 1px #fff,15vw 31vh 1px 2px #fff,40vw -8vh 3px 0px #fff,-3vw -5vh 2px 0px #fff,-39vw 16vh 2px 0px #fff,31vw 4vh 1px 1px #fff,-21vw 33vh 1px 3px #fff,-31vw 47vh 3px 3px #fff,-3vw -32vh 0px 0px #fff,-41vw 26vh 0px 3px #fff,18vw 0vh 3px 0px #fff,28vw -3vh 1px 2px #fff,-3vw -48vh 1px 1px #fff,-9vw -45vh 3px 0px #fff,-17vw 24vh 0px 0px #fff,-9vw 0vh 1px 3px #fff,28vw 50vh 1px 3px #fff,6vw 0vh 2px 0px #fff,40vw -3vh 2px 3px #fff,-49vw -20vh 0px 3px #fff,49vw 27vh 2px 0px #fff,-28vw 1vh 3px 1px #fff,-35vw 13vh 1px 3px #fff,18vw 10vh 0px 0px #fff,12vw -44vh 3px 2px #fff,-34vw 16vh 1px 3px #fff,27vw 38vh 1px 0px #fff,14vw 46vh 1px 3px #fff,-25vw -14vh 3px 0px #fff,-10vw 22vh 1px 1px #fff,43vw -13vh 3px 0px #fff,18vw 50vh 3px 3px #fff,5vw 27vh 2px 0px #fff,27vw -47vh 2px 1px #fff,-36vw 45vh 3px 0px #fff,2vw 4vh 3px 3px #fff,18vw 24vh 2px 0px #fff,-3vw 18vh 1px 1px #fff,1vw 39vh 1px 1px #fff,-10vw -16vh 3px 0px #fff,-36vw -36vh 1px 1px #fff,-50vw -11vh 0px 1px #fff,-11vw -32vh 1px 1px #fff,-18vw 38vh 1px 0px #fff,-16vw 50vh 1px 2px #fff,31vw 21vh 0px 2px #fff,-3vw 14vh 1px 0px #fff,47vw -19vh 1px 1px #fff,-47vw 14vh 1px 1px #fff,43vw 21vh 1px 2px #fff,28vw -17vh 1px 0px #fff,14vw 4vh 0px 3px #fff,-45vw 49vh 0px 3px #fff,1vw -13vh 2px 0px #fff,-47vw 26vh 1px 3px #fff,-23vw -37vh 1px 3px #fff,-23vw -27vh 0px 0px #fff,-14vw -6vh 1px 1px #fff,17vw -17vh 3px 0px #fff,6vw 5vh 0px 1px #fff,-44vw 15vh 3px 0px #fff,-6vw -49vh 1px 2px #fff,-47vw 2vh 3px 3px #fff,-41vw 35vh 2px 0px #fff,29vw -35vh 0px 0px #fff,-25vw -43vh 2px 0px #fff,-28vw -34vh 0px 1px #fff,-47vw 36vh 0px 3px #fff,3vw -34vh 0px 1px #fff,46vw -40vh 1px 1px #fff,-34vw -12vh 2px 1px #fff,49vw -20vh 3px 0px #fff,-27vw 41vh 3px 1px #fff,13vw 8vh 1px 0px #fff,49vw 34vh 2px 0px #fff,-11vw -22vh 2px 3px #fff,-19vw 47vh 1px 2px #fff,-15vw -37vh 0px 1px #fff,-34vw -16vh 3px 0px #fff,12vw 7vh 0px 3px #fff,-42vw -50vh 1px 3px #fff,10vw -11vh 3px 3px #fff,-18vw -7vh 3px 0px #fff,18vw 32vh 2px 3px #fff,6vw -45vh 0px 2px #fff,-48vw 32vh 1px 3px #fff,47vw 40vh 0px 0px #fff,-25vw 16vh 2px 0px #fff,50vw 21vh 0px 3px #fff,-41vw 27vh 2px 3px #fff,-13vw 2vh 2px 1px #fff,34vw 28vh 2px 0px #fff,-36vw 9vh 1px 1px #fff ;
+        animation: zoom 20s infinite;
+        z-index: -1;
+    }
+    
+    @keyframes zoom {
+        from{-webkit-transform: rotate(0deg);}
+        to{-webkit-transform: rotate(360deg);}
+    }
+
+    .flex{display:flex;align-items:center;justify-content: center;text-align: center;}
+    .grid{display:grid;align-items:center;justify-content: center;text-align: center;}
+
+    .bar1 {
+        background-color: black;
+        width: 40vw;
+        border: 5px solid;
+        border-image: linear-gradient(65deg,rgb(163, 122, 17), goldenrod,gold, #ddc917,#f5f4d3 , #ddc917 , gold,#ddc917 , #fdf9e4 ,#ddc917 , gold ) 1;
+        margin-right: 1vw;
+        margin-left: 1vw;
+    }
+    .bar2 {
+        background-color: black;
+        width: 40vw;
+        border: 5px solid;
+        border-image: linear-gradient(295deg,rgb(163, 122, 17), goldenrod,gold, #ddc917,#f5f4d3 , #ddc917 , gold,#ddc917 , #fdf9e4 ,#ddc917 , gold ) 1;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+    
+    #pclifes{
+        height: 4vh;
+        text-align: right;
+        line-height: 4vh;
+        border:1px solid black;
+        color: white;
+        
+    }
+    #mylifes {
+        height: 4vh;
+        text-align: left;
+        line-height: 4vh;
+        font-weight: bold;
+        border:1px solid black;
+    }
+
+    #winedRmy{text-align: right;width: 40vw;margin: 2vw;color: gold;font-size: 2em;font-weight: bold;margin-top: 0vh;}
+    #winedRpc{text-align: left;width: 40vw;margin: 2vw;color: gold;font-size: 2em;font-weight: bold;margin-top: 0vh;}
+    
+    .pdg{width: 100%;background-color: darkgreen;}
+    .pg{width: 80%;background-color:limegreen}
+    .py{width: 60%;background-color: yellow;}
+    .po{width: 40%;background-color:darkorange}
+    .pr{width: 20%;background-color: red;}
+
+    .ipg{width: 80%;margin-left: 20%;background-color: limegreen;}
+    .ipy{width: 60%;margin-left: 40%;background-color: yellow;}
+    .ipo{width: 40%;margin-left: 60%;background-color:darkorange}
+    .ipr{width: 20%;margin-left: 80%;background-color: red;}
+
+    .linear{
+        border: 5px solid;
+        border-image: linear-gradient(45deg, goldenrod,#fdf9e4 , gold , #fdf9e4 , goldenrod ) 1;
+    }
+    .linear1{
+        background: linear-gradient(black, black) padding-box,
+                    linear-gradient(to right, darkblue, darkorchid) border-box;
+        border-radius: 50em;
+        border: 4px solid transparent;
+    }
+
+    .silver{
+        background: -webkit-linear-gradient(90deg,white, #444 );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.8));
+        font-weight: bold;
+        font-size: 2em;
+        z-index: 1;
+    }
+
+    .fighters{min-height: 30vh;}
+    .fighter{width: 35vw;margin-left: 1vw;margin-right: 1vw;}
+    .imgr {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        z-index: -1;
+    }
+
+    .button1{
+        background-image: linear-gradient(lightblue, white); 
+        border-radius: .3em;padding: 0.3em;
+        border: none;
+        font-size: 3vh;
+        font-weight: bold;
+        z-index: 1;
+        color:black;
+    }
+    .button1:hover{
+        cursor:pointer;
+        background-image: linear-gradient(white, lightblue);
+    }
+
+    .button{
+        background: none;
+        border: none;
+        font-size: 3vh;
+        font-weight: bold;
+        z-index: 1;
+        color:lightblue;
+    }
+    .button:hover{
+        cursor:pointer;
+        transition: all 0.50s;
+        transform: rotateX(360deg);
+    }
+
+    button{
+        background: -webkit-linear-gradient(90deg,white, #444 );
+        border-image: linear-gradient(45deg, gold , rgb(179, 135, 23), rgb(248, 224, 88) ) 1;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.8));
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    button:hover{
+        cursor:pointer;
+        transition: all 0.1s;
+        transform: rotateX(360deg);
+    }
+</style>
+</body>
+</html>

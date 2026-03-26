@@ -3,9 +3,11 @@ import Navbar from './components/Navbar/Navbar'
 import About from './components/About/About'
 import Skills from './components/Skills/Skills'
 import Experience from './components/Experience/Experience'
-import Projects from './components/Projects'
-import Resume from './components/Resume'
-import Contact from './components/Contact'
+import Projects from './components/Projects/Projects'
+import Resume from './components/Resume/Resume'
+import Contact from './components/Contact/Contact'
+import Academic from './components/Academic/Academic'
+import Rpsls from "./games/rpsls/Rpsls";
 
 function App() {
 
@@ -31,6 +33,13 @@ function App() {
         <section id="spacer"></section>
         
         <Contact />
+        <section id="spacer"></section>
+
+        <Academic />
+        <section id="spacer"></section>
+
+        <Rpsls />
+
       </div>
 
 

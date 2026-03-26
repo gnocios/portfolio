@@ -22,6 +22,7 @@ function Navbar() {
         <a href="#projects" onClick={() => setOpen(false)}>{t("projects")}</a>
         <a href="#resume" onClick={() => setOpen(false)}>{t("resume")}</a>
         <a href="#contact" onClick={() => setOpen(false)}>{t("contact")}</a>
+        <a href="#academic" onClick={() => setOpen(false)}>{t("academic")}</a>
       </div>
 
 

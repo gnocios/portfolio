@@ -1,0 +1,267 @@
+/* 1. Contenedor Principal a Pantalla Completa */
+.rpsls {
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+  /* Importante: Usamos min-height y display flex */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Eliminamos padding excesivo para ganar espacio */
+  padding: 1rem;
+  background: radial-gradient(#0a0a2a, black);
+  /* Aseguramos que nada se salga */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.rpsls h1 {
+  margin: 0.5rem 0;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  
+  /* Degradado */
+  background: linear-gradient(to bottom, #ffffff 30%, #999999 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* SOLUCIÓN AL CORTE: */
+  padding-bottom: 0.2em; /* Espacio extra para que no se corte la sombra ni las letras */
+  line-height: 1.2;      /* Ajusta el interlineado */
+  
+  /* Sombra (Usa una más suave si sigue cortándose) */
+  filter: drop-shadow(0 4px 2px rgba(0,0,0,0.8));
+}
+
+/* 2. Sección de Estado (Vidas y Marcador) */
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  /* Mantenemos un ancho máximo para que no se estire demasiado */
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Barras de vida */
+.lifebars {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+
+.left { text-align: left; }
+.right { text-align: right; }
+
+.bar-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  width: 100%;
+  height: 25px; /* Altura fija para que no colapse */
+  background-color: #800000; /* Rojo oscuro de fondo */
+  border: 2px solid #555;
+  border-radius: 4px;
+  overflow: hidden; /* Corta lo que sobre del gradiente verde */
+  position: relative;
+}
+
+.life {
+  height: 100%;
+  background: linear-gradient(to bottom, limegreen, #27ae60);
+  transition: width 0.4s ease-in-out;
+}
+
+/* Para que la barra del CPU se reduzca hacia la derecha */
+.life.cpu {
+  margin-left: auto;
+}
+
+.life::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.2); /* Brillo superior */
+}
+
+.label {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  margin-bottom: 2px;
+}
+
+.stars {
+  margin-top: 0.3rem;
+  color: gold;
+  font-size: 1.3rem;
+  text-shadow: 0 0 5px rgba(255,215,0,0.7);
+}
+
+.result {
+  min-height: 1.5rem; 
+  margin-top: 0.5rem;
+}
+
+.result p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #ccc;
+}
+
+/* 3. LA ARENA (El Escenario Grande) */
+.arena {
+  /* ESTA ES LA CLAVE: Ocupa todo el espacio vertical restante */
+  flex: 1; 
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra las imágenes verticalmente */
+  gap: 10%; /* Espaciado relativo */
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  /* Posición relativa para que los controles puedan "flotar" si quieres */
+  position: relative; 
+}
+
+/* Imágenes de las Manos MUCHO más grandes */
+.arena img {
+  /* Usamos vh para que escalen con el alto de la pantalla */
+  width: auto;
+  height: 40vh; /* Ocupan el 40% del alto de la ventana */
+  max-height: 400px; /* Límite para pantallas muy altas */
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+  object-fit: contain;
+}
+
+.arena img.cpu {
+  transform: scaleX(-1);
+  filter: drop-shadow(0 0 15px rgba(255,0,0,0.3)); /* Sombra roja para CPU */
+}
+
+/* 4. LOS CONTROLES (Integrados, no al final) */
+.controls {
+  /* Situados justo debajo de la arena, con margen inferior */
+  margin-bottom: 2rem; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Para que bajen si no caben en móvil */
+  gap: 0.5rem;
+  z-index: 10; /* Asegura que estén sobre cualquier sombra */
+}
+
+/* Estilo de los Botones (Estilo MK/Arcade) */
+.controls button {
+  padding: 0.7rem 1.2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(to bottom, #444, #111);
+  border: 2px solid #999;
+  border-radius: 4px;
+  transition: all 0.1s ease;
+  box-shadow: 0 4px 0 #666, 0 6px 10px rgba(0,0,0,0.5);
+}
+
+/* Botón Start (Diferente) */
+.controls button:not([disabled]):first-child {
+    background: linear-gradient(to bottom, #800, #400);
+    border-color: #a00;
+    box-shadow: 0 4px 0 #600, 0 6px 10px rgba(0,0,0,0.5);
+}
+
+.controls button:hover:not([disabled]) {
+  background: linear-gradient(to bottom, #666, #222);
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #666, 0 4px 6px rgba(0,0,0,0.5);
+}
+
+.controls button:active:not([disabled]) {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #666, 0 2px 3px rgba(0,0,0,0.5);
+}
+
+/* Estado deshabilitado */
+.controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #555;
+  background: #222;
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+/* Botón pequeño para abrir reglas */
+.rules-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.4rem 0.8rem !important;
+  font-size: 0.9rem !important;
+  z-index: 100;
+}
+
+/* Fondo oscuro detrás de las reglas */
+.rules-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+/* El cuadro de las reglas */
+.rules-content {
+  background: linear-gradient(145deg, #1a1a3a, #000);
+  padding: 2rem;
+  border: 3px solid gold;
+  border-radius: 10px;
+  max-width: 90%;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+.rules-content h2 {
+  color: gold;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.rules-content p {
+  line-height: 1.8;
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  color: #eee;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

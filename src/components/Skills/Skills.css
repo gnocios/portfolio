@@ -2,43 +2,86 @@
   padding: 2rem;
 }
 
+/* Título principal */
 .skills-section .section-title {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
+/* Contenedor de categorías */
 .categories-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
+/* Cada bloque de categoría */
 .category-item {
-  padding-left: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
+.category-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Título de categoría */
 .category-title {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #111827;
 }
 
+/* Descripción */
 .category-description {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  color: #4b5563;
+  line-height: 1.5;
 }
 
+/* Contenedor de chips */
 .flex-chips {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
+/* Subcategorías (Frontend, Backend, etc) */
+.flex-chips > div {
+  background: #f9fafb;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+}
+
+/* Título de subcategoría */
+.flex-chips strong {
+  color: #1f2937;
+  margin-right: 0.4rem;
+}
+
+/* Chips individuales */
 .chip {
   display: inline-block;
   padding: 0.3rem 0.6rem;
+  margin: 0.2rem;
   border-radius: 16px;
-  background-color: #eee;
-  color: #272822;
+  background-color: #e0e7ff;
+  color: #1e3a8a;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+/* Hover chip */
+.chip:hover {
+  background-color: #c7d2fe;
+  transform: translateY(-1px);
 }

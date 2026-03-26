@@ -1,0 +1,25 @@
+{
+  "sectionTitle": "Educación y Certificaciones",
+  "items": [
+    {
+      "title": "Cursos de Desarrollo Full Stack",
+      "institution": "Coderhouse / Online",
+      "year": "2022-2023"
+    },
+    {
+      "title": "Estudios de Ingeniería",
+      "institution": "UTN",
+      "year": "Incompleto"
+    },
+    {
+      "title": "Certificación de Electricista",
+      "institution": "ERSEP",
+      "year": "2020"
+    },
+    {
+      "title": "Testing y Metodologías Ágiles",
+      "institution": "Diversos cursos online",
+      "year": "2022"
+    }
+  ]
+}

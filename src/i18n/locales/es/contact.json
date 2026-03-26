@@ -1,9 +1,12 @@
 {
-  "title": "My Portfolio",
-  "about": "About",
-  "skills": "Skills",
-  "experience": "Experience",
-  "projects": "Projects",
-  "resume": "Resume",
-  "contact": "Contact"
+  "title": "Contáctame",
+  "description": "No dudes en escribirme por email o a través de mis redes sociales.",
+  "socials": [
+    { "label": "Instagram", "url": "https://www.instagram.com/ignaciomontali/" },
+    { "label": "WhatsApp", "url": "https://wa.me/5493564369316" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/ignacioalfredomontali/" },
+    { "label": "GitHub", "url": "https://github.com/gnocios" },
+    { "label": "Email", "url": "mailto:ignaciomontali8@gmail.com" }
+  ],
+  "shareLabel": "Compartir Portfolio"
 }

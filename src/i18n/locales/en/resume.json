@@ -1,9 +1,22 @@
 {
-  "title": "My Portfolio",
-  "about": "About",
-  "skills": "Skills",
-  "experience": "Experience",
-  "projects": "Projects",
-  "resume": "Resume",
-  "contact": "Contact"
+  "title": "Resume",
+  "description": "Download my CVs in English or Spanish. Choose the one that suits your preference.",
+  "cvs": [
+    {
+      "label": "English CV (Standard)",
+      "file": "/cv/Ignacio_Montali_Frontend_Developer_CV_EN.pdf"
+    },
+    {
+      "label": "English CV (With Photo)",
+      "file": "/cv/Ignacio_Montali_Frontend_Developer_CV_EN_Photo.pdf"
+    },
+    {
+      "label": "Spanish CV (Standard)",
+      "file": "/cv/Ignacio_Montali_Desarrollador_Frontend_CV_ES.pdf"
+    },
+    {
+      "label": "Spanish CV (With Photo)",
+      "file": "/cv/Ignacio_Montali_Desarrollador_Frontend_CV_ES_Photo.pdf"
+    }
+  ]
 }

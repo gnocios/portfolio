@@ -4,6 +4,8 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import enAbout from "./locales/en/about.json";
 import esAbout from "./locales/es/about.json";
+import enAcademic from "./locales/en/academic.json";
+import esAcademic from "./locales/es/academic.json";
 import enContact from "./locales/en/contact.json";
 import esContact from "./locales/es/contact.json";
 import enExperience from "./locales/en/experience.json";
@@ -31,6 +33,7 @@ i18n
     resources: {
         en: {
             about: enAbout,
+            academic: enAcademic,
             contact: enContact,
             experience: enExperience,
             navbar: enNavbar,
@@ -40,6 +43,7 @@ i18n
         },
         es: {
             about: esAbout,
+            academic: esAcademic,
             contact: esContact,
             experience: esExperience,
             navbar: esNavbar,

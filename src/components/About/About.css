@@ -1,0 +1,21 @@
+.about-section {
+  padding: 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.about-description {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+}
+
