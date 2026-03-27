@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple Easy Stopwatch">
+    <meta name="keywords" content="Tabata Master, Sports Timmer">
+    <meta name="author" content="SoundsLikeFun.net">
+    <title>Stopwatch</title>
+    <link rel="icon" href="imagenes/slf.svg" type="image/gif" sizes="16x16">
+</head>
+<script>
+    var $id = function(o){return document.getElementById(o)};
+    var $c = function(o){return document.createElement(o)};
+    document.addEventListener("keyup", handleKey);
+    var resumen=[];
+    var run;
+    var paused;
+    var mudo=false;
+    var total = 0;
+    var turn = ""; 
+    var restartActive=false; 
+    var viendoInfo=false; 
+    beep= new Audio('beep.mp3');
+
+    function start(){
+        playAlarm();
+        
+        if(restartActive){
+            restartFrom=$id('restartFrom');
+            //transformar el restart en segundos
+            restartArr=restartFrom.value.split(':');
+            turnovers=$id('turnovers');    
+            total= (Number(restartArr[0]) * 60) + (Number(restartArr[1]));
+
+            lapnumber = turnovers.value;
+            oldlap = total;
+
+        }
+        else{total=0; lapnumber = 0; oldlap = 0; }   
+        
+        barra = 0;
+        paused = false;
+        ahora = $id('ahora');
+        //ahora.innerHTML="Jugando";
+        resultadosBox = $id('resultadosBox');
+        laps = $id('laps');
+        laps.innerHTML="";
+        lapsP = $id('lapsP');
+        lapsP.innerHTML="";
+        turn = ""; 
+        clearInterval(run);
+        clockout = $id('output');
+        run = setInterval(clock, 1000);
+    }
+
+    function handleInfo(){
+        infoBox = $id('infoBox');
+        gameBox = $id('gameBox');
+        
+        if(!viendoInfo){ 
+            viendoInfo=true;
+            infoBox.style="display:block"
+            gameBox.style="display:none"
+        }
+        else{
+            viendoInfo=false;
+            infoBox.style="display:none";
+            gameBox.style="display:block"
+
+        }
+    }
+
+    function restartFunc(){
+        restartBox = $id('restartBox');
+
+        if(!restartActive){ 
+            restartActive=true;
+            restartBox.style="display:block"
+        }
+        else{
+            restartActive=false;
+            restartBox.style="display:none";
+        }
+    }
+
+    function clock(){
+        let m = Math.floor(total / 60) % 60;
+        let s = Math.floor(total) % 60;
+        m = addZero(m);
+        s = addZero(s);
+        clockout.innerHTML = m + ":" + s ;
+        total+=1;
+
+    }
+
+    function secondstoReloj(seconds){
+        let m = Math.floor(seconds / 60) % 60;
+        let s = Math.floor(seconds) % 60;
+        m = addZero(m);
+        s = addZero(s);
+        return  m + ":" + s ;
+
+    }
+
+    function lap(){
+        playAlarm();
+        lapnumber++;
+        if(lapnumber%2 ){ turn="jugado"}
+        else{ if(turn == ""){ turn="pausado" } } 
+        thislap = total - oldlap;
+        oldlap += thislap;
+        var newlap =$c('div');
+        newlap.id = lapnumber;
+        //puedo crearlo en segundos o en tiempo
+        //let lapObject={T: lapnumber, total: secondstoReloj(total), turn: turn, turnTime: secondstoReloj(thislap)}
+        let lapObject={lap: lapnumber, turn: turn, turnTime: thislap }
+        resumen.push(lapObject);
+
+        let lapInfo="T: " + lapnumber +  ", total: "  + secondstoReloj(total) + ", " + turn + ": " + secondstoReloj(thislap) ;
+        newlap.innerHTML = lapInfo;
+        turn="";
+
+        if(lapnumber%2 ){ laps.appendChild(newlap); ahora.innerHTML="En pausa:" + turn;}
+        else{ lapsP.appendChild(newlap); ahora.innerHTML="Jugando";}
+
+    }
+
+
+    function pause(){
+        if(total == 0){return;}
+        else if(paused == false){
+            clearInterval(run);
+            paused = true;
+        }else{
+            run = setInterval(clock, 1000);
+            paused = false;
+        }
+        playAlarm();
+
+    }
+
+    function stop(){
+        if(total == 0){return;}
+        lap();
+        clearInterval(run);
+        //$id('output').innerHTML = "00:00";
+        resultados();
+    }
+
+    function resultados(){
+        ///.reduce( (a, b) => a + b, 0, )
+        let pausadoArr = resumen.filter((it) => it.turn != 'jugado');
+        let jugadoArr = resumen.filter((it) => it.turn == 'jugado');
+
+        let totalPausa=pausadoArr.map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let totalJuego=jugadoArr.map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let totalSegundos= totalPausa + totalJuego;
+        const maxPausado = pausadoArr.reduce( (a, b) => { return a.turnTime > b.turnTime ? a : b } );        
+        const maxJugado = jugadoArr.reduce( (a, b) => { return a.turnTime > b.turnTime ? a : b } );        
+
+        let pausasBanda= pausadoArr.filter((it) => it.turn == 'Saque Banda').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasMeta= pausadoArr.filter((it) => it.turn == 'Saque meta').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasCorner= pausadoArr.filter((it) => it.turn == 'Corner').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasFaltas= pausadoArr.filter((it) => it.turn == 'Falta').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasOffside= pausadoArr.filter((it) => it.turn == 'Offside').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasOtros= pausadoArr.filter((it) => it.turn == 'Otros').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasArquero= pausadoArr.filter((it) => it.turn == 'Arquero retiene').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasJugador= pausadoArr.filter((it) => it.turn == 'Jugador caido').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        let pausasCambios= pausadoArr.filter((it) => it.turn == 'Cambios').map((it)=>it.turnTime).reduce( (a, b) => a + b, 0, ) ;
+        
+
+        resultadosBox.innerHTML=""; 
+        var final =$c('div');
+        final.innerText = `Estos son los resultados:
+            Total:  ${secondstoReloj( totalSegundos ) } - Turnos: ${resumen.length}
+            Jugado: ${secondstoReloj( totalJuego ) } - ${(totalJuego/totalSegundos*100).toFixed(2) }%
+            Pausado: ${secondstoReloj( totalPausa ) } - ${(totalPausa/totalSegundos*100).toFixed(2) }%
+            Máximo Jugado: (T-${ maxJugado.lap }) - ${secondstoReloj( maxJugado.turnTime ) }
+            Máximo Pausado: (T-${ maxPausado.lap }) - ${secondstoReloj( maxPausado.turnTime ) }
+            
+            Perdido en Banda: ${secondstoReloj( pausasBanda ) }
+            Perdido en Meta: ${secondstoReloj( pausasMeta ) }
+            Perdido en Corner: ${secondstoReloj( pausasCorner ) }
+            Perdido en Faltas: ${secondstoReloj( pausasFaltas ) }
+            Perdido en Offside: ${secondstoReloj( pausasOffside ) }
+            Perdido en Otros: ${secondstoReloj( pausasOtros ) }
+            Perdido en Arquero: ${secondstoReloj( pausasArquero ) }
+            Perdido en Jugador: ${secondstoReloj( pausasJugador ) }
+            Perdido en Cambios: ${secondstoReloj( pausasCambios ) }
+        `;
+
+        resultadosBox.appendChild(final); 
+    }
+
+    function addZero(i) { if (i < 10) {i = "0" + i}; return i;}
+
+    function mute(){
+        if(mudo==false){$id('mute').innerText="Off";mudo=true;beep.volume=0;}
+        else{$id('mute').innerHTML="On";beep.volume=1;mudo=false;beep.play();}
+    }
+
+    function playAlarm(){beep.play();}
+
+    function handleKey(e){
+        if(total < 1){return;}
+        let element = e.key;
+        if(element=="ArrowDown"){lap();}
+
+        if(!(lapnumber%2) ){ return; }
+        playAlarm();
+        switch(element) {
+            case '1': turn="Saque Banda"; ahora.innerHTML="En pausa:" + turn; break;
+            case '2': turn="Saque meta"; ahora.innerHTML="En pausa:" + turn; break;
+            case '3': turn="Corner"; ahora.innerHTML="En pausa:" + turn; break;
+            case '4': turn="Falta"; ahora.innerHTML="En pausa:" + turn; break;
+            case '5': turn="Offside"; ahora.innerHTML="En pausa:" + turn; break;
+            case '6': turn="Otros"; ahora.innerHTML="En pausa:" + turn; break;
+            case '7': turn="Arquero retiene"; ahora.innerHTML="En pausa:" + turn; break;
+            case '8': turn="Jugador caido"; ahora.innerHTML="En pausa:" + turn; break;
+            case '9': turn="Cambios"; ahora.innerHTML="En pausa:" + turn; break;
+            default: break;
+        }
+        
+
+    }
+    function handleMotivo(motivo){
+        if(!(lapnumber%2) ){ return; }
+        playAlarm();
+        switch(motivo) {
+            case 1: turn="Saque Banda"; ahora.innerHTML="En pausa:" + turn; break;
+            case 2: turn="Saque meta"; ahora.innerHTML="En pausa:" + turn; break;
+            case 3: turn="Corner"; ahora.innerHTML="En pausa:" + turn; break;
+            case 4: turn="Falta"; ahora.innerHTML="En pausa:" + turn; break;
+            case 5: turn="Offside"; ahora.innerHTML="En pausa:" + turn; break;
+            case 6: turn="Otros"; ahora.innerHTML="En pausa:" + turn; break;
+            case 7: turn="Arquero retiene"; ahora.innerHTML="En pausa:" + turn; break;
+            case 8: turn="Jugador caido"; ahora.innerHTML="En pausa:" + turn; break;
+            case 9: turn="Cambios"; ahora.innerHTML="En pausa:" + turn; break;
+            default: break;
+        }
+    }
+</script>
+<body>
+    <div>
+        <h2>FUTBOL TIMMER</h2>
+        <div>
+            <div class=" m-2 p-2 gap-2">
+                <button id="startBtn" type="button" onclick="start();">Start</button>
+                <button id="pauseBtn" type="button" onclick="pause();">Pause</button>
+                <button id="stopBtn" type="button" onclick="stop();" >Stop</button>
+            </div>
+            <div class=" m-2 p-2 gap-2">
+                <button type="button" onclick="mute();">Sound <span id="mute">On</span></button>
+                <button id="startBtn" type="button" onclick="restartFunc();">Re Start</button>
+                <button id="startBtn" type="button" onclick="handleInfo();">Info</button>
+            </div>
+            <div id="restartBox" class="grid m-2 p-2 gap-2" style="display:none">
+                <div class="m-2 p-2 gap-2" ><h3>Turno anterior</h3></div>
+                <div class="m-2 p-2 gap-2" ><label>Restart From<input id="restartFrom" type="time" step="00:00"  value="0"/></label></div>
+                <div class="m-2 p-2 gap-2" ><label>Turnover<input id="turnovers" type="number" value="0"/></label></div>
+            </div>
+        </div>
+
+        <h2 id="output">00:00</h2>
+        <div id="ahora"></div>
+        
+        <div id="infoBox" style="display:none">
+            <h3>Info</h3>
+            <div>
+                En el fútbol se pierde mucho tiempo<br/>
+                Casi la mitad del partido SE PIERDE<br/>
+                Y esto no es bueno para una competencia justa ni para el espectador<br/>
+                No le creas a nadie, mídelo por ti mismo
+            </div>
+            <br/>
+            <h3>¿Como medir?¿Cómo usar?</h3>
+            <div>
+                Pulsas "Start" y luego con "Lap" el programa se encargará solo de ir dividiendo<br/>
+                Cuando está "Pausado" puedes especificar el motivo "clickeándolo"<br/>
+                También puedes usar el teclado:<br/>
+                "Flecha abajo es "Lap" y el resto cada número coincide.
+            </div>
+            <br/>
+            <div>
+                Estamos trabajando en una versión que arrojará el reporte completo de tiempos<br/>
+
+            </div>
+        </div>
+
+        <div id="gameBox">
+            <div >
+                <button type="button" onclick="lap();">Lap</button>
+
+                <div class="flex">
+                    <table class="table">
+                        <caption>Motivos de pausa</caption>
+                        <tr>
+                            <td class="motivo" onclick="handleMotivo(1);">1-Saque Banda</td>
+                            <td class="motivo" onclick="handleMotivo(2);">2-Saque meta</td>
+                            <td class="motivo" onclick="handleMotivo(3);">3-Córner</td>
+                        </tr>
+                        <tr >
+                            <td class="motivo" onclick="handleMotivo(4);">4-Falta</td>
+                            <td class="motivo" onclick="handleMotivo(5);">5-Offside</td>
+                            <td class="motivo" onclick="handleMotivo(6);">6-Otros</td>
+                        </tr>
+                        <tr>
+                            <td class="motivo" onclick="handleMotivo(7);">7-Arquero retiene</td>
+                            <td class="motivo" onclick="handleMotivo(8);">8-Jugador caido</td>
+                            <td class="motivo" onclick="handleMotivo(9);">9-Cambios</td>
+                        </tr>  
+                    </table>
+                </div>
+            </div>
+
+            <div id="resultadosBox" class="grid m-4 p-4"></div>
+
+            <div class="flex m-4 p-4">            
+                <table class="table">
+                    <tr><th>Jugado</th><th>Pausado</th></tr>
+                    <tr>
+                        <td id="laps"></td>
+                        <td id="lapsP"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex">
+        <a href="https://soundslikefun.net/" target="_blank" >
+            <div class="flex"><img  src="slf.svg" alt="SoundsLikeFun-Icon"/></div>
+            <div>Sounds Like Fun</div>
+        </a>
+    </div>
+
+</body>
+<style>
+    :root {
+        /* colors */
+        --clr-black: 0 0 0;
+        --clr-black2: 15 30 25;
+        --clr-white: 255 255 255;
+    
+        /* fonts sizes*/
+        --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+        --fs-800: 3.5rem;
+        --fs-750: 2.5rem;
+        --fs-700: 1.5rem;
+        --fs-600: 1rem;
+        --fs-500: 1rem;
+        --fs-400: 0.9375rem;
+        --fs-300: 1rem;
+        --fs-200: 0.875rem;
+        --fs-100: 0.5rem;
+    
+        /* font-families */
+        --ff-serif: "Bellfair", serif;
+        --ff-sans-cond: "Barlow Condensed", sans-serif;
+        --ff-sans-normal: "Barlow", sans-serif;
+      
+    }
+    /*--------------------*/
+    /*Reset               */
+    /*--------------------*/
+    
+    /* Box Sizing*/
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    
+    /* Reset margins*/
+    body,h1,h2,h3,h4,h5,p,figure,picture {
+        margin: 0;
+    }
+    
+    
+    
+    /*set up the body */
+    body {
+        min-height: 100vh;
+        background-color: black;
+        color:khaki;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        gap: 0.6em;
+        text-align: center;
+    }
+    body > div{display: grid;gap: 0.6em;}
+    /*make images easyier to work with*/
+    img,
+    picture {
+        max-width: 100%;
+        display: block;
+    }
+    
+    /*makes form elements easier to work with*/
+    input,button,textarea,select {
+        font: inherit;
+    }
+    
+    /* remove animations for people who´ve turned them off */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+    
+    /*--------------------*/
+    /*Reset               */
+    /*--------------------*/
+    .motivo:hover{
+        cursor: pointer;
+        background-color: khaki;
+        color: black;
+    }
+    .table{
+        border-collapse: collapse;
+        border: 0.1rem solid khaki;
+    
+    }
+    .table th{ border: 0.1rem solid khaki; }
+    .table tr{ border: 0.1rem solid khaki; }
+    .table td{ border: 0.1rem solid khaki; padding: 0.5rem; }
+
+    .grid{display: grid;}
+    .flex{display: flex; justify-content: center; align-items: center;}
+    
+    .clock{font-size: 4em;}
+    .tc{text-align: center;}
+    
+    .m-2{margin: 0.5rem;}
+    .p-2{margin: 0.5rem;}
+    .m-4{margin: 1rem;}
+    .p-4{margin: 1rem;}
+
+    .gap-2{ gap: 0.5rem; }
+    .gap-4{ gap: 1rem; }
+
+    a{text-decoration: none;}
+    a, a:visited, a:hover, a:active {
+        color: inherit;
+    }
+    .bblack{
+        background-color: black;
+        color:khaki;
+    }
+    .bblackgrad{
+    
+        background-image: radial-gradient(gray , black );
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .bblackgrad1{
+        background-image: radial-gradient( rgb(196, 163, 79), rgb(13,12,7) );
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .jc{justify-content: center;}
+    .ac{align-items: center;}
+    
+    .gap02{gap: 0.2em;}
+    .gap04{gap: 0.4em;}
+    .gap06{gap: 0.6em;}
+    .gap1{gap: 1em;}
+    
+    .four-ch {width: 3em;}
+    
+    button{
+        position: relative;display: inline-block;background-color: white;
+        background-image: linear-gradient(khaki, white); 
+        border-radius: .3em;padding: 0.3em;font-size: 1.5em;color: black;
+        font-weight: bold;transition: 0.4s;
+    }
+    
+    button:hover{
+        cursor:pointer;transition: 0.4s;transform: scale(1.1);
+        background-image: linear-gradient(white, khaki);
+    }
+    button:after{
+        content: '';position: absolute;top: 2px;left: 2px;width: calc(100% - 4px);
+        border-radius: 0.2em;height: 50%;
+        background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(250,250,250,0.1));
+    }
+    
+    input, select{
+        border-radius: .3em;
+        border: .1em solid white;
+    }
+
+
+</style>
+
+</html>

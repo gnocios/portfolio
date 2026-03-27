@@ -8,6 +8,7 @@ import Resume from './components/Resume/Resume'
 import Contact from './components/Contact/Contact'
 import Academic from './components/Academic/Academic'
 import Rpsls from "./games/rpsls/Rpsls";
+import Sillas from "./games/sillas/Sillas";
 
 function App() {
 
@@ -39,6 +40,9 @@ function App() {
         <section id="spacer"></section>
 
         <Rpsls />
+        <section id="spacer"></section>
+
+        <Sillas />
 
       </div>
 

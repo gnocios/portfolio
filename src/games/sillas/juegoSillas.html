@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El juego de las sillas</title>
+    <link rel="icon" href="images/slf.svg" type="image/gif" sizes="16x16">
+</head>
+<body>
+<div>
+    <h1>El juego de las sillas</h1>
+
+    <div class="flex gap06">
+        <h3>Duración entre</h3>
+        <div><label for="min">Min&nbsp;</label><input id="min" type="number" value="10" min="0" max="999" >&nbsp;seconds</div>
+        <div><label for="max">Max&nbsp;</label><input id="max" type="number" value="20" min="0" max="999">&nbsp;seconds</div>
+    </div>
+        
+    <div class="flex gap06">
+        <h3>Pausa para quitar sillas</h3>
+        <div><input id="quitarsillas" type="number"  value="20" min="0" max="999">&nbsp;seconds</div>
+    </div>
+    <div class="flex gap06">
+        <h3>Cantidad de jugadores</h3>
+        <div>
+            <input type="checkbox" onclick="show('cantidadjugadores')" id="cantidadactivo">
+            <input id="cantidadjugadores" type="number" min="2" style="display:none" min="0" max="999">
+        </div>
+        
+    </div>
+        
+    <div class="flex gap06">
+        <h3>Canción</h3>
+        <div>
+            <select id="sound">
+                <option value="song1">song1</option>
+                <option value="song2">song2</option>
+                <option value="song3">song3</option>
+            </select>
+        </div>
+        
+    </div>
+    <div class="mediaButtons">
+        <button type="button" onclick="start()">⏵</button>
+        <button type="button" onclick="pause()">⏸</button>
+        <button type="button" onclick="stop()">⏹</button>
+    </div>
+    
+    <div id="output" class="emfour"></div>
+    <div id="dislpayjugadores" style="display:none" class="emfour">Jugadores restantes<div id="quedan"></div></div>
+    
+</div>
+        
+
+<div class="flex"><a href="https://soundslikefun.net/" target="_blank"><img src="images/slf.svg" alt="Sounds Like Fun Icon"></a></div>
+
+<script>
+    var $id = function(o){return document.getElementById(o)};
+    var $c = function(o){return document.createElement(o)};
+    var run;
+
+    function show(e){if($id('cantidadactivo').checked){$id(e).style.display="";}else{$id(e).style.display="none";}}
+
+    function start(){
+        if(typeof cancion != 'undefined'){cancion.pause();}
+        clearTimeout(run);
+        min = Number($id('min').value)*1000;
+        max = Number($id('max').value)*1000 - min;
+        if(max == 0){alert("Debes seleccionar un Max"); return}
+        screen = $id('output');
+        paused = false;
+        sound = $id('sound').value;
+        cancion = new Audio('assets/sounds/'+sound+'.mp3');
+        cancion.loop = true;
+        frequency = Math.random()*max+min;
+        quitarsillas = Number($id('quitarsillas').value)*1000;
+        quedan = $id('quedan');
+        displayjugadores = $id('cantidadactivo');
+        if(displayjugadores.checked == true){
+            jugadores= Number($id('cantidadjugadores').value);
+            if(jugadores < 2){alert('Numero de jugadores no permitido');return}
+            $id('dislpayjugadores').style.display="";quedan.innerHTML=jugadores;
+        }else{
+            $id('dislpayjugadores').style.display="none"
+        };
+        screen.innerHTML = "Jugando";
+        clock();
+        
+    }
+
+    function clock(){
+        cancion.play();
+        screen.innerHTML = "Jugando";
+        run = setTimeout(limpiar, frequency);
+    }
+
+    function stop(){
+        clearTimeout(run);
+        screen.innerHTML = "Detenido";
+        cancion.pause();
+    }
+
+    function pause(){
+        if(paused == false){paused = true;screen.innerHTML = "Pausado";cancion.pause();clearTimeout(run);}
+        else{paused = false;screen.innerHTML = "Jugando";cancion.play();run = setTimeout(clock, frequency);}
+    }
+
+    function limpiar(){
+        cancion.pause();
+        screen.innerHTML = "Quitando una silla ";
+        if(activarJugadores() == "Fin"){return;}
+        run = setTimeout(clock, quitarsillas);
+    }
+
+    function activarJugadores(){
+        if(displayjugadores.checked == false){return;}
+        else{
+            if(jugadores > 1){
+                jugadores--;
+                quedan.innerHTML=jugadores;
+            }
+            if(jugadores == 1){screen.innerHTML = "Juego Finalizado";return "Fin";}
+        }
+    }
+
+</script>
+<style>
+    :root {
+        /* colors */
+        --clr-black: 0 0 0;
+        --clr-black2: 15 30 25;
+        --clr-white: 255 255 255;
+    
+        /* fonts sizes*/
+        --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+        --fs-800: 3.5rem;
+        --fs-750: 2.5rem;
+        --fs-700: 1.5rem;
+        --fs-600: 1rem;
+        --fs-500: 1rem;
+        --fs-400: 0.9375rem;
+        --fs-300: 1rem;
+        --fs-200: 0.875rem;
+        --fs-100: 0.5rem;
+    
+        /* font-families */
+        --ff-serif: "Bellfair", serif;
+        --ff-sans-cond: "Barlow Condensed", sans-serif;
+        --ff-sans-normal: "Barlow", sans-serif;
+      
+    }
+    /*--------------------*/
+    /*Reset               */
+    /*--------------------*/
+    
+    /* Box Sizing*/
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    
+    /* Reset margins*/
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    figure,
+    picture {
+        margin: 0;
+    }
+    
+    
+    
+    /*set up the body */
+    body {
+        min-height: 100vh;
+        background-color: black;
+        color:khaki;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        gap: 0.6em;
+        text-align: center;
+    }
+    
+    
+    .emfour, h1{font-size: 4em;}
+    .emtwo, h2{font-size: 2em;}
+    .emonef, h3{font-size: 1.5em;}
+    body > div{display: grid;gap: 0.6em;}
+    /*make images easyier to work with*/
+    img,
+    picture {
+        max-width: 100%;
+        display: block;
+    }
+    
+    /*makes form elements easier to work with*/
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+    }
+    
+    /* remove animations for people who´ve turned them off */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+    
+    /*--------------------*/
+    /*Reset               */
+    /*--------------------*/
+    
+    .grid{display: grid;}
+    .flexa{display: flex;align-items: center;}
+    .flex{display: flex; justify-content: center; align-items: center;}
+    
+    .dgrid{display: grid;}
+    .dflex{display: flex;}
+    .clock{font-size: 4em;}
+    .tc{text-align: center;}
+    
+    
+    .bblack{
+        background-color: black;
+        color:khaki;
+    }
+    .bblackgrad{
+    
+        background-image: radial-gradient(gray , black );
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .bblackgrad1{
+        background-image: radial-gradient( rgb(196, 163, 79), rgb(13,12,7) );
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .jc{justify-content: center;}
+    .ac{align-items: center;}
+    
+    .gap02{gap: 0.2em;}
+    .gap04{gap: 0.4em;}
+    .gap06{gap: 0.6em;}
+    .gap1{gap: 1em;}
+    
+    .four-ch {width: 3em;}
+    
+    button{
+        position: relative;display: inline-block;background-color: white;
+        background-image: linear-gradient(khaki, white); 
+        border-radius: .3em;padding: 0.3em;font-size: 1.5em;color: black;
+        font-weight: bold;transition: 0.4s;
+    }
+    
+    button:hover{
+        cursor:pointer;transition: 0.4s;transform: scale(1.1);
+        background-image: linear-gradient(white, khaki);
+    }
+    button:after{
+        content: '';position: absolute;top: 2px;left: 2px;width: calc(100% - 4px);
+        border-radius: 0.2em;height: 50%;
+        background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(250,250,250,0.1));
+    }
+    
+    input, select{
+        border-radius: .3em;
+        border: .1em solid white;
+    }
+    
+    input[type='range'] {
+        overflow: hidden;
+        -webkit-appearance: none;
+        height: 1em;
+        background-color: black;
+        border: 0.3px solid khaki;
+    }
+       
+    input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 1em;
+        height: 1em;
+        cursor: ew-resize;
+        background:red;
+        border-radius:0.3em;
+    }
+    
+    
+    progress:not([value]) {
+        -webkit-appearance: none;
+        appearance: none;
+        border: 0.1em solid khaki;
+        background:black;
+        border-radius:0.3em;
+    }
+    progress:not([value])::-webkit-progress-bar {
+        background:black;
+        border-radius:0.3em;
+        
+    }
+    progress[value]{
+        -webkit-appearance: none;
+        appearance: none;
+        border: 0.1em solid khaki;
+        background:black;
+        border-radius:0.3em;
+    }
+    progress[value]::-webkit-progress-bar {
+        background:black;
+        border-radius:0.3em;
+    
+    }
+    progress[value]::-webkit-progress-value {background-color: khaki;}
+    
+    .plus{
+        display: grid;
+        gap: 0.6em;
+    }
+
+    .mediaButtons button{
+        line-height: 1em;
+        vertical-align: middle;
+    }
+</style>
+</body>
+</html>
