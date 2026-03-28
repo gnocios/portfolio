@@ -1,0 +1,94 @@
+body{
+    box-sizing: border-box;
+    height: 100vh;
+    font-size: 3vh;
+    background-image: radial-gradient(green, black);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment:fixed;
+    color: white;
+}
+
+#gameInfo > div{margin: 0vh 2vh;}
+
+#nextRound,
+#afterGame{margin: 1vh 0vh;}
+
+#nextRound > button,
+#afterGame > button{margin: 0vh 1vh;}
+
+#fullDeck img,
+#table img{
+    height: 20vh;
+    padding: 1vh 1vh;
+}
+
+#fullDeck img{height: 17vh;}
+
+.hover:hover{cursor:pointer;}
+
+h1,
+.flex{display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+.flexTop{display: flex;align-items:baseline; justify-content: center;}
+
+.grid{display: grid; align-items: center; justify-content: center;}
+
+#results{
+    color: black;
+    text-align: center;
+    font-size: 5vh;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2vh 0vh;
+    position: fixed;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    height: 22vh;
+    width: 30vw;
+    margin-top: -11vh;  /* Negative half of height. */
+    margin-left: -15vw; /* Negative half of width. */
+    border: 1vh solid black;
+    border-radius:3vh;
+}
+
+
+button{font-size: 2vh;padding: 0.1em 0.3em;border:none;border-radius: 0.4vh;}
+
+#results button{
+    font-size: 3vh;
+    background-color: green;
+    border:none;
+    padding: 1vh 1vh;
+    border-radius: 1vh;
+}
+
+#fullDeck button,
+#startBtn {
+    font-size: 3vh;
+    border: none;
+    border-radius: 0.5vh;
+    padding: 1vh 1vw;
+    margin: 1vh 1vh;
+    background-color: white;
+}
+
+button:hover{cursor:pointer;transform: scale(1.1);}
+
+select,
+input{font-size: 2vh; border: none;border-radius: 0.5vh;}
+
+input[type=radio],
+input[type=checkbox]{
+    /*
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: gold;*/
+    height: 2vh;
+    width: 2vh;
+    border: none;border-radius: 0; padding: 0.1vh 0.1vh;
+}
+
+#startMenu div{margin: 1vh 1vh;}

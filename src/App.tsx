@@ -9,6 +9,8 @@ import Contact from './components/Contact/Contact'
 import Academic from './components/Academic/Academic'
 import Rpsls from "./games/rpsls/Rpsls";
 import Sillas from "./games/sillas/Sillas";
+import Rememora from './games/rememora/Rememora'
+import Slfmk from './games/slfmk/Slfmk'
 
 function App() {
 
@@ -43,6 +45,13 @@ function App() {
         <section id="spacer"></section>
 
         <Sillas />
+        <section id="spacer"></section>
+
+        <Rememora />
+        <section id="spacer"></section>
+
+        <Slfmk />
+        <section id="spacer"></section>
 
       </div>
 

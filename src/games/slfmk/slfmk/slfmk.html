@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sounds Like Fun Magic Keyboard</title>
+    <link rel="icon" href="images/slf.svg" type="image/gif" sizes="16x16">
+    
+</head>
+<body>
+    <h1>Sounds Like Fun Magic Keyboard</h1>
+    <div id="container">
+        <div class="mySlides">
+            <div class="numbertext">
+                <a class="prev" onclick="changeSong(-1)">&#10094;</a>&nbsp;
+                <label for="song"><span id="song" ></span>&nbsp;/&nbsp;10&nbsp;</label> 
+                <a class="next" onclick="changeSong(1)">&#10095;</a>
+                <a class="next" onclick="playSong($('song').innerHTML, 1)">&#9658;</a>
+                <a class="next" onclick="playSong($('song').innerHTML, 0)">&#x23f9;</a>
+            </div>
+            <img id="songImage" src="images/estrellita.svg" alt="Song Image">
+            
+        </div>
+        <div class="spanSize">(click or press -hover to know-)</div>
+        <div id="keyboard">
+            <div class="keys-container">
+                <div class="white">
+                    <div class="whitekey" id="0" onclick="playNote(this.id)"><span>G</span><img class="imgnote" src="images/notes/solb.svg" alt="" title="Press b"></div>
+                    <div class="whitekey" id="1" onclick="playNote(this.id)"><span>A</span><img class="imgnote" src="images/notes/lab.svg" alt="" title="Press n"></div>
+                    <div class="whitekey" id="2" onclick="playNote(this.id)"><span>B</span><img class="imgnote" src="images/notes/sib.svg" alt="" title="Press m"></div>
+                    <div class="whitekey" id="3" onclick="playNote(this.id)"><span>C</span><img class="imgnote" src="images/notes/do.svg" alt="" title="Press a"></div>
+                    <div class="whitekey" id="4" onclick="playNote(this.id)"><span>D</span><img class="imgnote" src="images/notes/re.svg" alt="" title="Press s"></div>
+                    <div class="whitekey" id="5" onclick="playNote(this.id)"><span>E</span><img class="imgnote" src="images/notes/mi.svg" alt="" title="Press d"></div>
+                    <div class="whitekey" id="6" onclick="playNote(this.id)"><span>F</span><img class="imgnote" src="images/notes/fa.svg" alt="" title="Press f"></div>
+                    <div class="whitekey" id="7" onclick="playNote(this.id)"><span>G</span><img class="imgnote" src="images/notes/sol.svg" alt="" title="Press g"></div>
+                    <div class="whitekey" id="8" onclick="playNote(this.id)"><span>A</span><img class="imgnote" src="images/notes/la.svg" alt="" title="Press h"></div>
+                    <div class="whitekey" id="9" onclick="playNote(this.id)"><span>B</span><img class="imgnote" src="images/notes/si.svg" alt="" title="Press j"></div>
+                    <div class="whitekey" id="10" onclick="playNote(this.id)"><span>C</span><img class="imgnote" src="images/notes/doa.svg" alt="" title="Press q"></div>
+                    <div class="whitekey" id="11" onclick="playNote(this.id)"><span>D</span><img class="imgnote" src="images/notes/rea.svg" alt="" title="Press w"></div>
+                    <div class="whitekey" id="12" onclick="playNote(this.id)"><span>E</span><img class="imgnote" src="images/notes/mia.svg" alt="" title="Press e"></div>
+                    <div class="whitekey" id="13" onclick="playNote(this.id)"><span>F</span><img class="imgnote" src="images/notes/faa.svg" alt="" title="Press r"></div>
+                    <div class="whitekey" id="14" onclick="playNote(this.id)"><span>G</span><img class="imgnote" src="images/notes/sola.svg" alt="" title="Press t"></div>
+                    <div class="whitekey" id="15" onclick="playNote(this.id)"><span>A</span><img class="imgnote" src="images/notes/laa.svg" alt="" title="Press y"></div>
+                    <div class="whitekey" id="16" onclick="playNote(this.id)"><span>B</span><img class="imgnote" src="images/notes/sia.svg" alt="" title="Press u"></div>
+                </div>
+                <div class="black">
+                    <div class="blackkey"></div>
+                    <div class="blackkey"></div>
+                    <div class=""></div>
+                    <div class="blackkey"></div>
+                    <div class="blackkey"></div>
+                    <div class=""></div>
+                    <div class="blackkey"></div>
+                    <div class="blackkey"></div>
+                    <div class="blackkey"></div>
+                    <div class=""></div>
+                    <div class="blackkey"></div>
+                    <div class="blackkey"></div>
+                    <div class=""></div>
+                    <div class="blackkey"></div>
+                    <div class="blackkey"></div>
+                    <div class="blackkey"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+<script>
+    var $ = function(o){return document.getElementById(o);}
+    document.addEventListener('keydown', playKey);
+    var solb = new Audio('sounds/notes/Solb.mp3');
+    var lab = new Audio('sounds/notes/Lab.mp3');
+    var sib = new Audio('sounds/notes/Sib.mp3');
+    var doo = new Audio('sounds/notes/Do.mp3');
+    var re = new Audio('sounds/notes/Re.mp3');
+    var mi = new Audio('sounds/notes/Mi.mp3');
+    var fa = new Audio('sounds/notes/Fa.mp3');
+    var sol = new Audio('sounds/notes/Sol.mp3');
+    var la = new Audio('sounds/notes/La.mp3');
+    var si = new Audio('sounds/notes/Si.mp3');
+    var doa = new Audio('sounds/notes/Doa.mp3');
+    var rea = new Audio('sounds/notes/Rea.mp3');
+    var mia = new Audio('sounds/notes/Mia.mp3');
+    var faa = new Audio('sounds/notes/Faa.mp3');
+    var sola = new Audio('sounds/notes/Sola.mp3');
+    var laa = new Audio('sounds/notes/Laa.mp3');
+    var sia = new Audio('sounds/notes/Sia.mp3');
+    var sound = [solb, lab, sib, doo, re, mi, fa, sol, la, si, doa, rea, mia, faa, sola, laa, sia];
+    var arrorro = new Audio('songs/arrorro.mp3');
+    var dosPorDiez = new Audio('songs/dosPorDiez.mp3');
+    var estrellita = new Audio('songs/estrellita.mp3');
+    var frySantiago = new Audio('songs/frySantiago.mp3');
+    var londonBridge = new Audio('songs/londonBridge.mp3');
+    var maryHad = new Audio('songs/maryHad.mp3');
+    var softKitty = new Audio('songs/softKitty.mp3');
+    var solfeo = new Audio('songs/solfeo.mp3');
+    var turaluralei = new Audio('songs/turaluralei.mp3');
+    var whenTheSaints = new Audio('songs/whenTheSaints.mp3');
+    var songs = [estrellita, maryHad, arrorro, dosPorDiez,  frySantiago, londonBridge, softKitty, solfeo, turaluralei, whenTheSaints];
+    var songImage = ["estrellita", "maryHad", "arrorro", "dosPorDiez", "frySantiago", "londonBridge", "softKitty", "solfeo", "turaluralei", "whenTheSaints"];
+    var currentSong=1;
+    $('song').innerHTML=currentSong;
+    $('songImage').setAttribute('src', "songs/estrellita.png");
+
+    function playNote(note){
+        sound[note].currentTime = 0;
+        sound[note].play();
+        $(note).classList.add('light');
+        setTimeout(function(){$(note).classList.remove('light');} ,100)
+    }
+
+    function playKey(e){
+        let key = e.keyCode;
+        switch (key){
+            case 66: playNote(0);break; case 78: playNote(1);break; case 77: playNote(2);break;
+            case 65: playNote(3);break;case 83: playNote(4);break;case 68: playNote(5);break;case 70: playNote(6);break;
+            case 71: playNote(7);break;case 72: playNote(8);break;case 74: playNote(9);break;
+            case 81: playNote(10);break;case 87: playNote(11);break;case 69: playNote(12);break;case 82: playNote(13);break;
+            case 84: playNote(14);break;case 89: playNote(15);break;case 85: playNote(16);break;
+            
+        }
+    }
+
+function playSong(song, action){
+    song= Number(song)-1;
+    if(action==1){songs[song].currentTime=0;songs[song].play();}else{songs[song].pause();}
+}
+
+function changeSong(songNumber){
+    playSong(currentSong, 0);
+    currentSong += songNumber;
+    if(currentSong>songs.length){currentSong=1;}else if(currentSong==0){currentSong=songs.length;}
+    $('song').innerHTML=currentSong;
+    $('songImage').setAttribute('src', "songs/"+songImage[currentSong-1]+".png");    
+}
+
+</script>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body{display: grid;align-items: center; justify-content: center;text-align: center;font-size: 2vw;background-color:white;}
+
+    #container{display: grid;align-items: center; justify-content: center;text-align: center;font-size: 2vw;
+        margin: 1vw 1vw; padding:1vw 1vw;gap: 1vw;
+    }
+
+    #songImage{height: 18vw;}
+
+    .keys-container {
+        width: 80.5vw;
+        height: 15.6vw;
+        background-color: black;
+        border: 0.3vw solid black;
+        border-radius: 0.3vw;
+    }
+    
+    .white {
+        width: 80vw;
+        height: 15vw;
+        position: absolute;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 0.3vw;
+    }
+    
+    .whitekey {
+        height: 15vw;
+        background-color: white;
+        border-radius: 0 0 0.6vw 0.6vw;
+        text-align: center;
+    }
+
+    .whitekey span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .black {
+        display: grid;
+        width: 75vw;
+        height: 9vw;
+        position:relative;
+        left: 3.5vw;
+        grid-template-columns: 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
+        grid-gap: 2.736vw;
+    }
+    
+    .blackkey {
+        background-color:black;
+        border-radius: 0 0 0.3vw 0.3vw;
+    }
+    
+    .light{background-color: blueviolet;}
+
+    .imgnote{height: 3vw;position:relative;top: 9vw;}
+
+    a:hover{cursor:pointer; transform: scale(1.1);}
+
+    .spanSize{font-size: 1vw;}
+</style>
+</body>
+</html>

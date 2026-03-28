@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Music memory game, cards memory, rememora D memory, Sounds Like Fun">
+    <meta name="keywords" content="Music, memory, traditional, learning, Sounds, Like, Fun, game, Do, Re, Mi, Fa, Sol, La, Si, Notas, aprender">
+    <meta name="author" content="SoundsLikeFun.net">
+    <link rel="icon" href="images/slfIcon.svg" type="image/gif" sizes="16x16"> 
+    <title>Memory</title>
+    <link rel="stylesheet" href="memory.css">
+    <script src="memory.js"></script>
+</head>
+<body>
+    <h1>Music Memory</h1>
+    <div id="startMenu" class="grid">
+        <div class="flex"><button onclick="create();" id="startBtn">Start</button></div>
+
+        <div>
+            <label for="players">Players</label>
+            <select id="players">
+                <option value="solitary">Solitary</option>
+                <option value="2players">2 Players</option>
+                <option value="vspc">Vs Pc</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="gameMode">Game Mode</label>
+            <select id="gameMode" onchange="displaySingleOptions(this.selectedIndex)">
+                <option value="rounds">Adding Rounds</option>
+                <option value="single">Single Game</option>
+            </select>
+        </div>
+        <div>
+            <label for="timerMode">Time</label>
+            <input id="timerMode" type="checkbox" checked>
+            <input id="timeAmount" type="number" min="20" max="90" value="60">10 to 90
+        </div>
+        <div>
+            <label for="soundMode">Sounds</label>
+            <input id="soundMode" type="checkbox" checked>
+        </div>
+        <div>
+            <label for="musicMode">Music</label>
+            <input id="musicMode" type="checkbox" checked>
+        </div>
+
+        <div id="singleOptions" style="display:none">
+            <div>
+                <p class="flex">Images</p>
+                <div class="flex">
+                    <input type="radio" id="imageWay0" name="imageWay" value="0" checked>
+                    <select id="imagetype" onchange="pairsOption(this.value)">
+                        <option value="random">Random</option>
+                        <option value="clef">Clefs</option>
+                        <option value="alterations">Alterations</option>
+                        <option value="playing">Playing</option>
+                        <option value="metrics">Metrics</option>
+                        <option value="dynamic">Dynamics</option>
+                        <option value="instruments">Instruments</option>
+                        <option value="notes">Notes</option>
+                        <option value="silences">Silences</option>
+                    </select>
+                    <div id="selectPairsAmount">
+                        <label>Pairs&nbsp;<input id="pairsRandom" type="number" min="1" max="27" value="7">&nbsp;1 to 27</label>
+                    </div>
+                </div>
+                <div class="flex">
+                    <label ><input type="radio" id="imageWay1"  name="imageWay" value="1" onclick="showDeck()">Select manually</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fullDeck" style="display:none">
+        <div class="flex">
+            <button onclick="selectedManually(1);create();">Start</button>
+            <button onclick="selectedManually(0);">Back</button>
+        </div>
+        <div class="flex">
+            Clefs&rarr;
+            <div class="flex">
+                <div class="grid "><input type="checkbox" name="0" onclick="chosenCard(this.name)"><img src="images/0.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="1" onclick="chosenCard(this.name)"><img src="images/1.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="2" onclick="chosenCard(this.name)"><img src="images/2.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="flex">
+            Alterations&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="3" onclick="chosenCard(this.name)"><img src="images/3.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="4" onclick="chosenCard(this.name)"><img src="images/4.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="5" onclick="chosenCard(this.name)"><img src="images/5.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="flex">
+            Playing&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="46" onclick="chosenCard(this.name)"><img src="images/46.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="47" onclick="chosenCard(this.name)"><img src="images/47.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="48" onclick="chosenCard(this.name)"><img src="images/48.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="49" onclick="chosenCard(this.name)"><img src="images/49.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="flex">Metrics&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="6" onclick="chosenCard(this.name)"><img src="images/6.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="7" onclick="chosenCard(this.name)"><img src="images/7.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="8" onclick="chosenCard(this.name)"><img src="images/8.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="9" onclick="chosenCard(this.name)"><img src="images/9.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="10" onclick="chosenCard(this.name)"><img src="images/10.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="11" onclick="chosenCard(this.name)"><img src="images/11.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="33" onclick="chosenCard(this.name)"><img src="images/33.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="34" onclick="chosenCard(this.name)"><img src="images/34.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="35" onclick="chosenCard(this.name)"><img src="images/35.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="flex">Dynamics&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="13" onclick="chosenCard(this.name)"><img src="images/13.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="14" onclick="chosenCard(this.name)"><img src="images/14.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="15" onclick="chosenCard(this.name)"><img src="images/15.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="27" onclick="chosenCard(this.name)"><img src="images/27.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="28" onclick="chosenCard(this.name)"><img src="images/28.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="29" onclick="chosenCard(this.name)"><img src="images/29.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="30" onclick="chosenCard(this.name)"><img src="images/30.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="flex">
+            Instruments&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="17" onclick="chosenCard(this.name)"><img src="images/17.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="50" onclick="chosenCard(this.name)"><img src="images/50.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="51" onclick="chosenCard(this.name)"><img src="images/51.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="52" onclick="chosenCard(this.name)"><img src="images/52.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="53" onclick="chosenCard(this.name)"><img src="images/53.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="flex">Notation&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="16" onclick="chosenCard(this.name)"><img src="images/16.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="18" onclick="chosenCard(this.name)"><img src="images/18.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="19" onclick="chosenCard(this.name)"><img src="images/19.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="41" onclick="chosenCard(this.name)"><img src="images/41.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="42" onclick="chosenCard(this.name)"><img src="images/42.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="43" onclick="chosenCard(this.name)"><img src="images/43.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="44" onclick="chosenCard(this.name)"><img src="images/44.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="45" onclick="chosenCard(this.name)"><img src="images/45.svg" alt=""></div>
+
+            </div>
+        </div>
+        <div class="flex">Values&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="20" onclick="chosenCard(this.name)"><img src="images/20.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="21" onclick="chosenCard(this.name)"><img src="images/21.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="22" onclick="chosenCard(this.name)"><img src="images/22.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="23" onclick="chosenCard(this.name)"><img src="images/23.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="24" onclick="chosenCard(this.name)"><img src="images/24.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="31" onclick="chosenCard(this.name)"><img src="images/31.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="32" onclick="chosenCard(this.name)"><img src="images/32.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="12" onclick="chosenCard(this.name)"><img src="images/12.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="flex">Silences&rarr;
+            <div class="flex">
+                <div class="grid"><input type="checkbox" name="36" onclick="chosenCard(this.name)"><img src="images/36.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="37" onclick="chosenCard(this.name)"><img src="images/37.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="25" onclick="chosenCard(this.name)"><img src="images/25.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="26" onclick="chosenCard(this.name)"><img src="images/26.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="38" onclick="chosenCard(this.name)"><img src="images/38.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="39" onclick="chosenCard(this.name)"><img src="images/39.svg" alt=""></div>
+                <div class="grid"><input type="checkbox" name="40" onclick="chosenCard(this.name)"><img src="images/40.svg" alt=""></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameContainer" style="display:none">
+        <div id="gameInfo" class="flexTop">
+            <div>
+                <div>Moving: <span id="moving"></span></div>
+                <div>Time: <span id="time"></span></div>
+                <div>Round: <span id="round"></span></div>
+                <div id="musicSoundControls">
+                    <button onclick="volume(this.id)" id="musicBtn" style="display:none">Music &#128266;</button>
+                    <button onclick="volume(this.id)" id="soundBtn" style="display:none">Sounds &#128266;</button>
+                </div>
+            </div>
+            <div>
+                <strong>Player 1</strong>
+                <div>Missed: <span id="tries"></span></div>
+                <div>Matches: <span id="matches"></span></div>
+                <div>Total Score: <span id="score"></span></div>
+            </div>
+            <div id="showSecondPlayer" style="display:none">
+                <strong id="secondPlayer"></strong>
+                <div>Missed: <span id="tries2"></span></div>
+                <div>Matches: <span id="matches2"></span></div>
+                <div>Total Score: <span id="score2"></span></div>
+            </div>
+        </div>
+        
+        <div id="table" class="flex"></div>
+    </div>
+
+    <div id="results" style="display:none" class="grid">
+        <div id="resultText" class="flex"></div>
+        <div id="nextRound" style="display:none" class="flex">
+            <button onclick="nextRound();">Next Round</button>
+            <button onclick="restart();">Restart</button>
+        </div>
+        
+        <div id="afterGame"  class="flex" style="display:none">
+            <button onclick="playAgain();hide('afterGame');">Play again</button>
+            <button onclick="mainMenu();">Main Menu</button>
+            <button onclick="restart();">Restart</button>
+        </div>
+    </div>
+
+</body>
+</html>
