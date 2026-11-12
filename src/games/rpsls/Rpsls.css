@@ -1,0 +1,432 @@
+/* Everything is scoped under .rpsls so it can't leak into the rest of the site */
+
+/* 1. Full-screen container */
+.rpsls {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: radial-gradient(#0a0a2a, black);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.rpsls h1 {
+  margin: 0.5rem 0;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  background: linear-gradient(to bottom, #ffffff 30%, #999999 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.2em;
+  line-height: 1.2;
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.8));
+}
+
+.rpsls .invisible {
+  visibility: hidden;
+}
+
+/* 2. Mute button */
+.rpsls .mute-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #777;
+  border-radius: 50%;
+}
+
+.rpsls .mute-toggle:hover {
+  border-color: gold;
+}
+
+/* 3. Status: life bars, round, result text */
+.rpsls .status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rpsls .lifebars {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.rpsls .left {
+  text-align: left;
+}
+
+.rpsls .right {
+  text-align: right;
+}
+
+.rpsls .bar-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rpsls .bar {
+  width: 100%;
+  height: 25px;
+  background-color: #800000;
+  border: 2px solid #555;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rpsls .life {
+  height: 100%;
+  background: linear-gradient(to bottom, limegreen, #27ae60);
+  transition: width 0.4s ease-in-out;
+}
+
+/* The CPU bar shrinks towards the right */
+.rpsls .life.cpu {
+  margin-left: auto;
+}
+
+.rpsls .life::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.rpsls .label {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  margin-bottom: 2px;
+}
+
+.rpsls .stars {
+  min-height: 1.6rem;
+  margin-top: 0.3rem;
+  color: gold;
+  font-size: 1.3rem;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+}
+
+.rpsls .round-info {
+  margin: 0;
+  min-height: 1.2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.rpsls .headline {
+  margin: 0;
+  min-height: 2rem;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: gold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.rpsls .headline.is-win {
+  color: #5fe35f;
+}
+
+.rpsls .headline.is-lose,
+.rpsls .headline.is-timeout {
+  color: #ff5a5a;
+}
+
+.rpsls .detail {
+  margin: 0;
+  min-height: 1.5rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #ccc;
+}
+
+/* 4. The arena */
+.rpsls .arena {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.rpsls .arena img {
+  width: auto;
+  height: 40vh;
+  max-height: 400px;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+  object-fit: contain;
+}
+
+.rpsls .arena img.cpu {
+  transform: scaleX(-1);
+  filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+}
+
+/* 5. Countdown */
+.rpsls .timer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0.5rem auto 1rem;
+}
+
+.rpsls .timer-bar {
+  flex: 1;
+  height: 12px;
+  background: #222;
+  border: 2px solid #555;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rpsls .timer-fill {
+  height: 100%;
+  background: linear-gradient(to bottom, #ffd54a, #e0a800);
+  transition: width 0.1s linear;
+}
+
+.rpsls .timer-fill.danger {
+  background: linear-gradient(to bottom, #ff5a5a, #c00000);
+}
+
+.rpsls .timer-text {
+  min-width: 2ch;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: gold;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 6. Controls */
+.rpsls .controls {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+/* Start / Rules */
+.rpsls .actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.rpsls .actions button,
+.rpsls .rules-content button {
+  padding: 0.7rem 1.2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(to bottom, #444, #111);
+  border: 2px solid #999;
+  border-radius: 4px;
+  transition: all 0.1s ease;
+  box-shadow: 0 4px 0 #666, 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.rpsls .actions button.primary {
+  background: linear-gradient(to bottom, #800, #400);
+  border-color: #a00;
+  box-shadow: 0 4px 0 #600, 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.rpsls .actions button:hover,
+.rpsls .rules-content button:hover {
+  background: linear-gradient(to bottom, #666, #222);
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #666, 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.rpsls .actions button:active,
+.rpsls .rules-content button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #666, 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* The five move buttons, with their images */
+.rpsls .moves {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 640px;
+}
+
+.rpsls .move {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(to bottom, #444, #111);
+  border: 2px solid #999;
+  border-radius: 6px;
+  transition: all 0.1s ease;
+  box-shadow: 0 4px 0 #666, 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.rpsls .move img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.rpsls .move:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #666, #222);
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #666, 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.rpsls .move:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #666, 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.rpsls .move:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* The move the player picked stays highlighted while the round resolves */
+.rpsls .move.selected {
+  opacity: 1;
+  border-color: gold;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+/* 7. Rules overlay */
+.rpsls .rules-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.rpsls .rules-content {
+  background: linear-gradient(145deg, #1a1a3a, #000);
+  padding: 2rem;
+  border: 3px solid gold;
+  border-radius: 10px;
+  max-width: 90%;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  animation: rpsls-fade-in 0.3s ease;
+}
+
+.rpsls .rules-content h2 {
+  color: gold;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.rpsls .rules-list {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  line-height: 1.8;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  color: #eee;
+  text-align: left;
+}
+
+.rpsls .rules-note {
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  color: #bbb;
+  text-align: left;
+}
+
+@keyframes rpsls-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 8. Small screens */
+@media (max-width: 480px) {
+  .rpsls h1 {
+    font-size: 1.8rem;
+  }
+
+  .rpsls .headline {
+    font-size: 1.3rem;
+  }
+
+  .rpsls .arena img {
+    height: 28vh;
+  }
+
+  .rpsls .moves {
+    gap: 0.3rem;
+  }
+
+  .rpsls .move {
+    padding: 0.25rem;
+    font-size: 0.6rem;
+  }
+}

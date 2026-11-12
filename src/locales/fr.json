@@ -1,0 +1,279 @@
+{
+  "navbar": {
+    "title": "Ignacio Montali",
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "contact": "Contact",
+    "menu": "Menu",
+    "language": "Langue",
+    "games": { "back": "Retour au portfolio" }
+  },
+  "hero": {
+    "name": "Ignacio Montali",
+    "headline": "Développeur full stack qui conçoit des produits SaaS et des applications mobiles, de la base de données jusqu'à Google Play.",
+    "subheadline": "Laravel, React, Vue et TypeScript. Des systèmes multitenant en production et une application Android publiée, le tout construit de bout en bout.",
+    "cta": "Ouvert aux postes full stack en télétravail",
+    "ctaButton": "Me contacter"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "description": "Je construis seul des produits logiciels complets, de la base de données au serveur, jusqu'au store d'applications. Depuis 2021, j'ai conçu et lancé trois plateformes SaaS multitenant pour des agences immobilières, des nutritionnistes et des salles de sport, ainsi qu'une application d'apprentissage du japonais publiée sur Google Play. Elles partagent un même stack et une architecture commune qui me permet de les améliorer toutes en même temps, et elles tournent sur des serveurs que je configure et déploie moi-même. J'ai commencé à programmer après avoir utilisé un CRM pour la première fois dans une agence immobilière en Espagne, et je crée des logiciels de gestion depuis, notamment des bases de données de plus de 100 tables couvrant plusieurs domaines."
+  },
+  "contact": {
+    "title": "Parlons-en",
+    "description": "Je recherche un poste full stack en télétravail où je pourrai prendre en charge des fonctionnalités de bout en bout. Si vous recrutez ou connaissez quelqu'un qui recrute, envoyez-moi un e-mail ou retrouvez-moi sur LinkedIn.",
+    "emailButton": "M'envoyer un e-mail",
+    "cvButton": "Voir mon CV"
+  },
+  "projects": {
+    "title": "Projets",
+    "ui": {
+      "close": "Fermer",
+      "highlights": "Points forts",
+      "stack": "Stack technique",
+      "learnings": "Ce que j'ai appris",
+      "privateRepo": "Le code source est privé. Une présentation commentée du code est disponible sur demande."
+    },
+    "items": [
+      {
+        "id": 1,
+        "type": "Application mobile + API",
+        "title": "Nachigo",
+        "tagline": "Application d'apprentissage du japonais conçue autour du fonctionnement de la mémoire, disponible sur Google Play.",
+        "description": "Nachigo enseigne le japonais grâce à un parcours d'étude prêt à l'emploi, du JLPT N5 au N1, qui couvre le vocabulaire, les hiragana, les katakana et les kanji avec de vraies phrases d'exemple. Chaque mot passe par deux étapes : la Short Loop Practice (SLP) fixe le nouveau vocabulaire dans la mémoire à court terme en quelques minutes grâce à des cycles de répétition rapides de plus en plus difficiles, puis mon propre algorithme de répétition espacée, basé sur des intervalles de Fibonacci (FSRS), planifie chaque révision pour que le mot atteigne la mémoire à long terme. Les professeurs de japonais peuvent proposer l'application à leurs propres élèves via des licences.",
+        "traction": "Utilisée par des étudiants et par des professeurs de japonais qui la proposent à leurs propres élèves via des licences.",
+        "logo": [
+          "/projects/nachigo_logo.png"
+        ],
+        "links": [
+          { "label": "Visiter le site web", "url": "https://nachigo.com/" },
+          { "label": "Disponible sur Google Play", "url": "https://play.google.com/store/apps/details?id=com.nachigo.app" }
+        ],
+        "stack": [
+          "Frontend : React 19, TypeScript, React Router, TanStack Query avec cache persistant (IndexedDB), Zustand, i18next (16 langues), Vite, PWA",
+          "Mobile : Capacitor (Android), publiée sur Google Play",
+          "Backend : API REST Laravel 12, Sanctum, Socialite (connexion Google), Redis, Spatie activitylog",
+          "Base de données : PostgreSQL",
+          "Paiements : abonnements Lemon Squeezy",
+          "Infrastructure : VPS Linux, Docker, script de déploiement automatisé, LibreTranslate pour automatiser les traductions"
+        ],
+        "highlights": [
+          "Parcours d'étude prêt à l'emploi (happy path) classé par niveau JLPT, du N5 au N1",
+          "Short Loop Practice : des cycles de répétition de difficulté croissante pour ancrer le nouveau vocabulaire dans la mémoire à court terme",
+          "Algorithme de répétition espacée maison basé sur la suite de Fibonacci : une bonne réponse fait avancer un mot sur la courbe, une erreur le fait reculer",
+          "Mode Défi à six niveaux qui retirent progressivement des informations, et Mode Entraînement avec un contrôle total sur les cartes",
+          "Validation par saisie de texte ou par boutons rapides, pour que les étudiants apprennent en écrivant et en lisant à la fois",
+          "Interface en 16 langues, avec abonnements et un modèle de licences pour les professeurs"
+        ],
+        "learnings": [
+          "Concevoir un produit d'apprentissage autour du fonctionnement de la mémoire et implémenter le planificateur et le flux de révision qui le soutiennent",
+          "Construire un client React typé au-dessus d'une API Laravel et le faire passer du navigateur à une application Android publiée avec Capacitor",
+          "Exploiter un produit de bout en bout, seul : facturation, automatisation des traductions, déploiements et support pour les professeurs qui l'utilisent"
+        ]
+      },
+      {
+        "id": 2,
+        "type": "SaaS web",
+        "title": "Nutrisaas",
+        "tagline": "SaaS multitenant qui fait tourner un cabinet de nutrition, du premier contact avec le patient aux plans alimentaires calculés jusqu'aux micronutriments.",
+        "description": "Nutrisaas numérise tout le flux de travail d'un nutritionniste dans un seul système qui fonctionne 24 h/24, 7 j/7, et de façon simple. Il couvre la prise en charge et l'accueil des patients, leur dossier médical et leurs mesures corporelles, des plans alimentaires calculés à partir de deux bases de données de composition des aliments jusqu'au micronutriment, la planification, les paiements et les rapports, ainsi qu'un portail client et un site web public pour chaque professionnel. C'est l'un des trois produits SaaS que j'ai construits sur le même stack et la même architecture : un module commun partagé par tous et un module propre à chaque métier.",
+        "traction": "Lancé cette année et déjà utilisé par environ 20 professionnels, chacun avec sa propre base de données et son site web sur un sous-domaine.",
+        "logo": [
+          "/projects/nutrisaas_logo.png"
+        ],
+        "links": [
+          { "label": "Visiter le site web", "url": "https://nutrisaas.com/" },
+          { "label": "Essayer les calculateurs", "url": "https://nutrisaas.com/calculadoras" }
+        ],
+        "stack": [
+          "Frontend : Vue 3, Inertia.js, TailwindCSS, Vite, FullCalendar, éditeur TipTap, Chart.js, dayjs",
+          "Backend : Laravel 11, Jetstream, Sanctum, Ziggy",
+          "Base de données : MySQL, une base de données par tenant",
+          "Multitenant : stancl/tenancy, chaque tenant avec sa propre base de données et son site web sur un sous-domaine",
+          "Paquets Spatie : medialibrary, tags",
+          "Images : conversion et optimisation avec Spatie medialibrary et Intervention Image",
+          "Intégrations : paiements MercadoPago, synchronisation Google Calendar, notifications push web, génération de PDF (DomPDF)",
+          "PWA : installable sur tout appareil"
+        ],
+        "highlights": [
+          "Moteur nutritionnel : plans alimentaires et recettes calculés jusqu'au micronutriment, sur deux bases de composition des aliments, FAO (Venezuela) et ENNyS 2 (Argentine)",
+          "Gestion complète du cabinet : clients, dossier médical, bioimpédance, anthropométrie, journaux alimentaires, objectifs, transformations et carnet de suivi",
+          "Calculateurs nutritionnels pour la dépense énergétique, l'hydratation, l'IMC, les macros et les protéines",
+          "Planification avec calendrier, disponibilités, réservations web et demandes web, ainsi que tâches, notifications et modèles de messages",
+          "Module de caisse avec notifications de paiement, indicateurs et rapports, et paiements intégrés via MercadoPago",
+          "Portail client où chaque professionnel choisit les sections que ses clients peuvent voir",
+          "Site web public et blog par professionnel, configurables depuis le panneau d'administration",
+          "Architecture modulaire : un module commun plus un module nutrition, réutilisés dans mes deux autres produits SaaS pour que je puisse améliorer les trois en même temps",
+          "Suite de tests automatisés qui parcourt toute l'application, avec des seeders qui recréent une utilisation réaliste"
+        ],
+        "learnings": [
+          "Diviser un produit en un noyau commun et un module propre à chaque métier pour que les nouvelles verticales réutilisent l'essentiel du travail",
+          "Isoler chaque client avec sa propre base de données et son site web sur un sous-domaine, et garder cela gérable à mesure que les tenants se multiplient",
+          "Combiner deux sources de composition des aliments en une seule structure pour que chaque plan puisse être calculé jusqu'aux micronutriments"
+        ]
+      },
+      {
+        "id": 3,
+        "type": "SaaS web",
+        "title": "FitProAdmin",
+        "tagline": "SaaS multitenant modulaire qui fait tourner un club entier, de la simple location d'un court à une salle de sport complète avec abonnements, programmes d'entraînement et boutique en ligne.",
+        "description": "FitProAdmin numérise toute l'exploitation des salles de sport, studios et clubs sportifs dans un seul système qui fonctionne 24 h/24, 7 j/7, et de façon simple. Chaque tenant reçoit uniquement les modules dont il a besoin : cours et réservations, programmes d'entraînement, nutrition, membres et cotisations, locations, boutique en ligne, contrôle d'accès et audits. C'est le grand produit dont Nutrisaas a été extrait sous forme de micro-SaaS. Je l'ai conçu et construit seul, du modèle de données jusqu'au déploiement.",
+        "traction": "Utilisé par des professeurs de pilates et de yoga, en production et en test, chacun avec sa propre base de données et son site web sur un sous-domaine.",
+        "logo": [
+          "/projects/fitproadmin_logo.png"
+        ],
+        "links": [
+          { "label": "Visiter le site web", "url": "https://fitproadmin.com" }
+        ],
+        "stack": [
+          "Frontend : Vue 3, Inertia.js, TailwindCSS, Vite, Axios, dayjs",
+          "Backend : Laravel 11, Jetstream, Sanctum, Ziggy, Laravel Notifications",
+          "Base de données : MySQL, une base de données par tenant",
+          "Multitenant : stancl/tenancy, chaque tenant avec sa propre base de données et son site web sur un sous-domaine",
+          "Paquets Spatie : permission, activitylog, medialibrary, tags",
+          "Images : conversion et optimisation avec Spatie medialibrary et Intervention Image",
+          "Intégrations : paiements MercadoPago, notifications push web, génération de PDF (DomPDF)",
+          "Testing / DevOps : PHPUnit, Mockery, Laravel Pint, Faker",
+          "PWA : installable sur tout appareil"
+        ],
+        "highlights": [
+          "Architecture modulaire : chaque tenant n'active que les modules dont il a besoin, si bien que le même produit convient à un professeur de yoga comme à une salle de sport complète",
+          "Cours et réservations : plannings, créneaux fixes et réservés, présence, évaluations et calcul de la rémunération des instructeurs",
+          "Entraînement : programmes, exercices, groupes musculaires, équipements, minuteurs, journaux d'entraînement et catalogue",
+          "Une application de minuteurs complémentaire, conçue pour les entraînements et minuteurs gérés depuis la plateforme, est sur le point de sortir",
+          "Abonnements : membres et cotisations, services, commandes, remises, coupons et plusieurs moyens de paiement",
+          "Location de courts et d'espaces par type et par créneau horaire, ainsi qu'une boutique en ligne avec produits et règles de livraison",
+          "Suivi des clients : relevés biométriques, carnet de suivi, objectifs et transformations, avec un module de nutrition optionnel",
+          "Contrôle : journaux d'audit, gestion avancée des rôles et des permissions, et contrôle des entrées et sorties",
+          "Site web public par tenant avec galeries, activités, salles, FAQ et horaires d'ouverture",
+          "Module commun partagé et réutilisé par mes deux autres produits SaaS, pour que les améliorations profitent aux trois"
+        ],
+        "learnings": [
+          "Concevoir et migrer un très grand schéma relationnel, et y introduire le multitenant pour la première fois",
+          "Activer des modules par tenant pour qu'une seule base de code s'adapte à des activités très différentes sans la dupliquer",
+          "Reconstruire le même produit sur quatre architectures, du PHP, HTML, JS, CSS et SQL purs à Laravel Blade, React puis, enfin, un monolithe Laravel, Inertia et Vue"
+        ]
+      },
+      {
+        "id": 4,
+        "type": "SaaS web",
+        "title": "Inmotix",
+        "tagline": "CRM multitenant qui fait tourner une agence immobilière, de la prise en charge et de la publication d'un bien jusqu'à la gestion du contrat de location.",
+        "description": "Inmotix numérise tout ce que fait une agence immobilière dans un seul système qui fonctionne 24 h/24, 7 j/7, et de façon simple : prendre et estimer des biens, les publier sur le site web de l'agence et sur des portails tiers, traiter les demandes et les offres, et gérer les locations avec contrats, échéances et révisions de loyer. C'est le premier logiciel de gestion que j'ai voulu construire, après avoir utilisé un CRM pour la première fois en travaillant dans une agence immobilière en Espagne en 2020 et avoir commencé à programmer en 2021. Il repose sur le même stack et la même architecture commune que mes deux autres produits SaaS.",
+        "traction": "Utilisé par quelques agences immobilières, chacune avec sa propre base de données et son site web sur un sous-domaine.",
+        "logo": [
+          "/projects/inmotix_logo.png"
+        ],
+        "links": [
+          { "label": "Visiter le site web", "url": "https://inmotix.com/" },
+          { "label": "Essayer les calculateurs", "url": "https://inmotix.com/calculadoras" }
+        ],
+        "stack": [
+          "Frontend : Vue 3, Inertia.js, TailwindCSS, Vite, Axios, dayjs",
+          "Backend : Laravel 11/12, Jetstream, Sanctum, Ziggy, Laravel Notifications",
+          "Base de données : MySQL, une base de données par tenant",
+          "Multitenant : stancl/tenancy, chaque tenant avec sa propre base de données, son dépôt d'images et son site web sur un sous-domaine",
+          "Paquets Spatie : medialibrary, tags, activitylog",
+          "Images : conversion et optimisation avec Spatie medialibrary et Intervention Image",
+          "Intégrations : synchronisation Google Calendar, paiements MercadoPago, notifications push web, génération de PDF (DomPDF)",
+          "PWA : installable sur tout appareil"
+        ],
+        "highlights": [
+          "Flux immobilier complet : prise en charge, estimation, location, vente et publication de biens, avec groupes de biens et parties impliquées",
+          "Publication sur le site web de l'agence et sur des portails tiers",
+          "Gestion locative : contrats avec parties et garants, modèles de contrat, échéances et révisions de loyer automatiques selon un indice",
+          "Module de caisse avec mouvements, notifications de paiement, paiements reçus, indicateurs et rapports",
+          "Calendrier et agenda avec synchronisation Google Calendar, exceptions, tâches, anniversaires et notifications",
+          "Demandes web, offres et modèles de messages pour assurer le suivi de chaque prospect",
+          "Statistiques du site web : combien de personnes le visitent et quels biens elles consultent",
+          "Site web public par agence, configurable depuis le panneau d'administration, avec blog, FAQ, services et horaires d'ouverture",
+          "Calculateurs en ligne proposés comme service pour attirer de nouveaux clients : loyer, crédit, rentabilité, valeur au mètre carré et valeur du bien, ainsi que des calculateurs de construction pour les matériaux, les quantités et les prix",
+          "Tutoriels intégrés et tutoriels vidéo pour les agences qui l'utilisent",
+          "Application centrale qui gère les tenants, un catalogue partagé de provinces et de localités, et les jours fériés"
+        ],
+        "learnings": [
+          "Modéliser des contrats de location avec leurs échéances, leurs garants et leurs révisions selon un indice, des règles qui évoluent dans le temps",
+          "Séparer une application centrale des bases de données de chaque tenant et garder les deux cohérentes",
+          "Réutiliser un stack éprouvé et un module commun pour mettre rapidement en production une nouvelle verticale"
+        ]
+      },
+      {
+        "id": 5,
+        "type": "Jeu",
+        "title": "RPSLS",
+        "tagline": "Pierre-feuille-ciseaux joué comme un jeu de combat, où chaque victoire est annoncée comme un coup fatal.",
+        "description": "J'ai créé ce jeu en 2021, alors que j'apprenais à programmer, parce que je trouvais l'idée drôle : un duel de pierre-feuille-ciseaux avec deux coups supplémentaires, où une voix hurle comme si un simple jeu de mains était le coup de grâce d'un jeu de combat. Vous jouez en deux manches gagnantes contre l'ordinateur, chaque manche comportant cinq vies, et chaque résultat s'accompagne d'une explication sur la raison de la victoire. La première version tenait dans un seul fichier HTML avec du JavaScript pur. Je l'ai ensuite reconstruit avec React et TypeScript en séparant les règles du jeu de l'interface, et je le garde ici pour montrer comment je suis passé d'un script fonctionnel à un composant typé et bien structuré.",
+        "traction": "Créé en 2021 comme projet d'apprentissage en HTML, CSS et JavaScript pur, puis reconstruit avec React et TypeScript.",
+        "logo": [
+          "/projects/rpsls_logo.png"
+        ],
+        "links": [
+          { "label": "Jouer au jeu", "url": "/games/rpsls" }
+        ],
+        "stack": [
+          "Version d'origine (2021) : HTML, CSS et JavaScript vanilla dans un seul fichier",
+          "Version actuelle : React, TypeScript, Vite",
+          "Logique du jeu : fonctions pures en TypeScript avec coups et résultats typés",
+          "Interface : CSS personnalisé pour les barres de vie, l'arène et l'écran des règles",
+          "Audio : HTMLAudioElement avec banques de sons aléatoires pour les victoires et les défaites"
+        ],
+        "highlights": [
+          "Cinq coups et dix règles, avec une explication en une ligne justifiant chaque résultat",
+          "En deux manches gagnantes (Best of 3), avec cinq vies par manche, barres de vie et étoiles de victoire",
+          "Chaque victoire et chaque défaite est annoncée par un son aléatoire différent, donnant au jeu toute sa personnalité",
+          "Écran des règles sonorisé et blocage des commandes pendant la résolution d'un tour pour éviter le spam"
+        ],
+        "learnings": [
+          "Remplacer l'arithmétique d'index sur des tableaux et une expression régulière par une table de règles explicite et une recherche typée",
+          "Isoler les règles du jeu dans des fonctions pures, séparées de l'interface, afin de rendre la logique compréhensible et testable indépendamment",
+          "Gérer les manches chronométrées et les sons dans React sans lire d'état obsolète (stale state)",
+          "Revenir sur mon propre code de débutant pour l'améliorer, la meilleure méthode que j'ai trouvée pour mesurer ma progression"
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Compétences et expertise",
+    "categories": [
+      {
+        "title": "Développement web full stack",
+        "description": "Des applications web complètes, de la conception de la base de données à l'interface utilisateur, avec un accent sur le SaaS B2B multitenant.",
+        "techStack": {
+          "Frontend": ["React", "Vue 3", "Inertia.js", "TypeScript", "JavaScript", "TailwindCSS", "Vite", "TanStack Query", "Zustand", "i18next", "HTML5", "CSS3"],
+          "Backend": ["Laravel", "PHP", "Node.js", "APIs REST", "Laravel Sanctum", "Connexion sociale (Google)", "Redis"],
+          "Bases de données": ["PostgreSQL", "MySQL (optimisation, indexation, conception multitenant)"],
+          "Paquets et intégrations": ["stancl/tenancy", "Spatie (permission, activitylog, medialibrary, tags)", "MercadoPago", "Lemon Squeezy"],
+          "Architecture et pratiques": ["Architecture et conception logicielle", "Architecture multitenant", "POO", "SOLID", "Scrum", "Kanban"]
+        }
+      },
+      {
+        "title": "Développement mobile",
+        "description": "Des produits web portés sur Android et publiés sur Google Play, avec d'autres projets mobiles en cours.",
+        "techStack": {
+          "Android": ["Capacitor", "Publication sur Google Play", "PWA", "Persistance hors ligne"],
+          "Multiplateforme et natif": ["React Native", "Kotlin"]
+        }
+      },
+      {
+        "title": "DevOps et déploiement",
+        "description": "Des serveurs et des déploiements configurés et maintenus par mes soins, avec des mises à jour automatisées à chaque livraison.",
+        "techStack": {
+          "Infrastructure": ["VPS Linux", "Docker", "Redis", "LibreTranslate"],
+          "Automatisation": ["Scripts de déploiement Bash", "Scripts Python (formatage d'images, traductions)", "Automatisation des traductions"],
+          "Gestion de versions": ["Git", "GitHub"]
+        }
+      },
+      {
+        "title": "Tests et qualité",
+        "description": "Des tests automatisés et des données réalistes pour garder les grandes applications fiables à mesure qu'elles grandissent.",
+        "techStack": {
+          "Tests": ["PHPUnit", "Mockery", "Exécuteur de tests automatisé couvrant toute l'application"],
+          "Données": ["Seeders de base de données qui recréent une utilisation réaliste", "Faker"],
+          "Qualité du code": ["Laravel Pint", "ESLint", "TypeScript"]
+        }
+      }
+    ]
+  }
+}

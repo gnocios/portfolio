@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ignacio Montali | Full Stack Developer · Laravel, Vue, React</title>
+    <meta
+      name="description"
+      content="Full Stack Developer. Diseño y operación de SaaS B2B multitenant con Laravel, Vue y React. Portfolio de productos en producción."
+    />
+    <meta name="author" content="Ignacio Montali" />
+    <link rel="canonical" href="https://ignaciomontalitech.com/" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16171d" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ignacio Montali | Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="SaaS B2B multitenant en producción con Laravel, Vue y React."
+    />
+    <meta property="og:url" content="https://ignaciomontalitech.com/" />
+    <meta property="og:image" content="https://ignaciomontalitech.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme')
+          var dark = saved
+            ? saved === 'dark'
+            : matchMedia('(prefers-color-scheme: dark)').matches
+          document.documentElement.classList.toggle('dark', dark)
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
