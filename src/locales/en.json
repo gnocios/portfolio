@@ -201,6 +201,37 @@
       },
       {
         "id": 5,
+        "type": "Web App",
+        "title": "Portfolio",
+        "tagline": "Multilingual developer portfolio built with React and TypeScript, featuring interactive mini-apps and open-source code.",
+        "description": "I built this portfolio to showcase my SaaS products, mobile apps and early learning projects in one fast, clean interface. Unlike my commercial platforms, the source code of this site is completely public on GitHub so anyone can inspect how I structure React components, handle typed data models, and manage internationalization across five languages without relying on heavy external UI frameworks.",
+        "traction": "Open-source showcase deployed on a Linux VPS with automated shell scripts.",
+        "logo": [
+          "/projects/portfolio_logo.jpg"
+        ],
+        "links": [
+          { "label": "View source on GitHub", "url": "https://github.com/gnocios/portfolio" }
+        ],
+        "stack": [
+          "Frontend: React, TypeScript, Vite",
+          "Internationalization: i18next supporting 5 languages (English, Spanish, French, Portuguese, Japanese)",
+          "Styling: Custom responsive CSS with clean component isolation",
+          "Deployment: Linux VPS, Nginx, automated bash deploy script"
+        ],
+        "highlights": [
+          "Full support for 5 languages with structured JSON locale files",
+          "Embedded playable React mini-games running inside the same SPA",
+          "Public GitHub repository serving as a live code sample alongside private SaaS projects",
+          "Zero-downtime deployment workflow using a custom bash script on a Linux VPS"
+        ],
+        "learnings": [
+          "Structuring scalable localization schemas for complex project descriptions and technical stacks",
+          "Balancing visual simplicity with rich technical detail so both recruiters and founders can scan projects quickly",
+          "Managing clean Git histories and selective repository exposure for public portfolios"
+        ]
+      },
+      {
+        "id": 6,
         "type": "Game",
         "title": "RPSLS",
         "tagline": "Rock paper scissors played like a fighting game, where every win is announced like a finishing move.",

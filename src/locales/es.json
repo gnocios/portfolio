@@ -201,6 +201,37 @@
       },
       {
         "id": 5,
+        "type": "Aplicación Web",
+        "title": "Portfolio",
+        "tagline": "Portfolio multilingüe desarrollado con React y TypeScript, con minijuegos interactivos y código abierto.",
+        "description": "Construí este portfolio para presentar mis productos SaaS, aplicaciones móviles y proyectos de aprendizaje en una interfaz rápida y limpia. A diferencia de mis plataformas comerciales, el código fuente de este sitio es completamente público en GitHub para que cualquiera pueda revisar cómo estructuro componentes en React, manejo modelos de datos tipados y gestiono la internacionalización en cinco idiomas sin depender de librerías visuales pesadas.",
+        "traction": "Vitrina de código abierto desplegada en un VPS Linux con scripts automatizados.",
+        "logo": [
+          "/projects/portfolio_logo.jpg"
+        ],
+        "links": [
+          { "label": "Ver código en GitHub", "url": "https://github.com/gnocios/portfolio" }
+        ],
+        "stack": [
+          "Frontend: React, TypeScript, Vite",
+          "Internacionalización: i18next con soporte para 5 idiomas (inglés, español, francés, portugués y japonés)",
+          "Estilos: CSS personalizado y responsivo con aislamiento limpio de componentes",
+          "Despliegue: VPS Linux, Nginx y script bash automatizado"
+        ],
+        "highlights": [
+          "Soporte completo para 5 idiomas mediante archivos JSON estructurados",
+          "Minijuegos jugables en React integrados dentro de la misma SPA",
+          "Repositorio público en GitHub que sirve como muestra real de código junto a los proyectos SaaS privados",
+          "Flujo de despliegue rápido mediante un script bash personalizado en VPS Linux"
+        ],
+        "learnings": [
+          "Estructurar esquemas escalables de traducción para descripciones técnicas complejas",
+          "Equilibrar la simplicidad visual con el detalle técnico para facilitar la lectura tanto a reclutadores como a clientes",
+          "Gestionar historiales limpios en Git y exposición selectiva de archivos en repositorios públicos"
+        ]
+      },
+      {
+        "id": 6,
         "type": "Juego",
         "title": "RPSLS",
         "tagline": "Piedra, papel o tijera jugado como un juego de lucha, donde cada victoria se anuncia como un golpe final.",

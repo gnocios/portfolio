@@ -201,6 +201,37 @@
       },
       {
         "id": 5,
+        "type": "Application Web",
+        "title": "Portfolio",
+        "tagline": "Portfolio de développeur multilingue conçu avec React et TypeScript, intégrant des mini-jeux interactifs et un code open source.",
+        "description": "J'ai créé ce portfolio pour présenter mes produits SaaS, mes applications mobiles et mes projets d'apprentissage dans une interface rapide et épurée. Contrairement à mes plateformes commerciales, le code source de ce site est entièrement public sur GitHub afin que chacun puisse examiner comment je structure mes composants React, gère des modèles de données typés et organise l'internationalisation en cinq langues sans dépendances UI lourdes.",
+        "traction": "Vitrine open source déployée sur un VPS Linux avec scripts automatisés.",
+        "logo": [
+          "/projects/portfolio_logo.jpg"
+        ],
+        "links": [
+          { "label": "Voir le code sur GitHub", "url": "https://github.com/gnocios/portfolio" }
+        ],
+        "stack": [
+          "Frontend : React, TypeScript, Vite",
+          "Internationalisation : i18next prenant en charge 5 langues (anglais, espagnol, français, portugais, japonais)",
+          "Styles : CSS personnalisé et responsive avec isolation propre des composants",
+          "Déploiement : VPS Linux, Nginx, script bash de déploiement automatisé"
+        ],
+        "highlights": [
+          "Prise en charge complète de 5 langues via des fichiers de traduction JSON structurés",
+          "Mini-jeux jouables en React intégrés directement au sein de la même SPA",
+          "Dépôt public sur GitHub servant d'échantillon de code concret aux côtés des projets SaaS privés",
+          "Workflow de déploiement rapide via un script bash personnalisé sur VPS Linux"
+        ],
+        "learnings": [
+          "Structurer des schémas de localisation évolutifs pour des descriptions de projets techniques détaillées",
+          "Équilibrer la sobriété visuelle et la richesse technique pour une lecture rapide",
+          "Gérer des historiques Git propres et une exposition sélective du code dans des dépôts publics"
+        ]
+      },
+      {
+        "id": 6,
         "type": "Jeu",
         "title": "RPSLS",
         "tagline": "Pierre-feuille-ciseaux joué comme un jeu de combat, où chaque victoire est annoncée comme un coup fatal.",
