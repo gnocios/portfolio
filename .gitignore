@@ -12,13 +12,6 @@ dist
 dist-ssr
 *.local
 
-# Juegos privados
-src/games/rememora/
-src/games/sillas/
-src/games/slfmk/
-src/games/tiemponeto/
-
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
