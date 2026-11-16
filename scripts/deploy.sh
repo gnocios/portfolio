@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-# Define aquí la carpeta de tu portfolio en el VPS
 APP_DIR="/var/www/portfolio"
 
 echo "🚀 Iniciando despliegue del Portfolio..."

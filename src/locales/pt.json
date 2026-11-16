@@ -201,37 +201,6 @@
       },
       {
         "id": 5,
-        "type": "Aplicação Web",
-        "title": "Portfolio",
-        "tagline": "Portfólio multilíngue desenvolvido com React e TypeScript, com minijogos interativos e código aberto.",
-        "description": "Criei este portfólio para apresentar meus produtos SaaS, aplicativos móveis e projetos de aprendizado em uma interface rápida e limpa. Ao contrário das minhas plataformas comerciais, o código-fonte deste site é totalmente público no GitHub para que qualquer pessoa possa inspecionar como estruturo componentes React, lido com modelos de dados tipados e gerencio a internacionalização em cinco idiomas sem depender de frameworks visuais pesados.",
-        "traction": "Vitrine de código aberto implantada em um VPS Linux com scripts automatizados.",
-        "logo": [
-          "/projects/portfolio_logo.jpg"
-        ],
-        "links": [
-          { "label": "Ver código no GitHub", "url": "https://github.com/gnocios/portfolio" }
-        ],
-        "stack": [
-          "Frontend: React, TypeScript, Vite",
-          "Internacionalização: i18next com suporte para 5 idiomas (inglês, espanhol, francês, português e japonês)",
-          "Estilização: CSS personalizado e responsivo com isolamento limpo de componentes",
-          "Deploy: VPS Linux, Nginx e script bash automatizado"
-        ],
-        "highlights": [
-          "Suporte completo para 5 idiomas com arquivos JSON de tradução bem estruturados",
-          "Minijogos jogáveis em React integrados dentro da mesma SPA",
-          "Repositório público no GitHub servindo como amostra real de código ao lado dos projetos SaaS privados",
-          "Fluxo de deploy rápido utilizando um script bash personalizado em VPS Linux"
-        ],
-        "learnings": [
-          "Estruturar esquemas escaláveis de localização para descrições técnicas complexas",
-          "Equilibrar simplicidade visual com riqueza de detalhes técnicos para facilitar a leitura",
-          "Gerenciar históricos limpos no Git e exposição seletiva de arquivos em repositórios públicos"
-        ]
-      },
-      {
-        "id": 6,
         "type": "Jogo",
         "title": "RPSLS",
         "tagline": "Pedra, papel e tesoura jogado como um jogo de luta, onde cada vitória é anunciada como um golpe final.",
@@ -241,7 +210,8 @@
           "/projects/rpsls_logo.png"
         ],
         "links": [
-          { "label": "Jogar agora", "url": "/games/rpsls" }
+          { "label": "Jogar agora", "url": "/games/rpsls" },
+          { "label": "Ver código", "url": "https://github.com/gnocios/rock-paper-scissors-lizard-spock" }
         ],
         "stack": [
           "Original (2021): HTML, CSS e JavaScript vanilla em um único arquivo",
@@ -261,6 +231,48 @@
           "Mover as regras do jogo para funções puras, separadas da interface, para que a lógica possa ser compreendida e testada de forma isolada",
           "Lidar com rodadas temporizadas e sons no React sem ler estados desatualizados (stale state)",
           "Voltar ao meu próprio código inicial e aprimorá-lo, que é a melhor maneira que encontrei de medir o quanto aprendi"
+        ]
+      }
+    ]
+  },
+  "github": {
+    "title": "Código aberto",
+    "items": [
+      {
+        "id": 1,
+        "title": "Portfolio",
+        "description": "Este site: React e TypeScript com modelos de dados tipados e i18n em cinco idiomas, sem frameworks de UI pesados.",
+        "stack": ["React", "TypeScript", "Vite", "i18next"],
+        "links": [
+          { "label": "Ver código", "url": "https://github.com/gnocios/portfolio" }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "RPSLS",
+        "description": "Pedra, papel, tesoura, lagarto, Spock. As regras do jogo são funções puras em TypeScript, separadas da interface React.",
+        "stack": ["React", "TypeScript", "Vite"],
+        "links": [
+          { "label": "Ver código", "url": "https://github.com/gnocios/rock-paper-scissors-lizard-spock" },
+          { "label": "Jogar", "url": "/games/rpsls" }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Play Store Graphics Generator",
+        "description": "Gera as imagens localizadas da página do Google Play (gráfico de destaque e 8 capturas de tela) em 17 localidades a partir de arquivos JSON, com suporte a RTL para árabe e urdu e fontes por idioma.",
+        "stack": ["Python", "Pillow", "NumPy", "i18n", "RTL"],
+        "links": [
+          { "label": "Ver código", "url": "https://github.com/gnocios/playstore-python-multilanguage-graphics-generator" }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Symbokus Sudoku Book Generator",
+        "description": "Gera livros de sudoku imprimíveis em PDF com conjuntos de símbolos temáticos (braille, números romanos, notas musicais, I Ching), níveis de dificuldade e soluções. Inclui a versão original em PHP, uma versão reescrita em PHP e uma versão em Python.",
+        "stack": ["Python", "ReportLab", "PHP", "mPDF"],
+        "links": [
+          { "label": "Ver código", "url": "https://github.com/gnocios/symbokus-sudokus-book-generator" }
         ]
       }
     ]

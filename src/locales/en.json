@@ -201,37 +201,6 @@
       },
       {
         "id": 5,
-        "type": "Web App",
-        "title": "Portfolio",
-        "tagline": "Multilingual developer portfolio built with React and TypeScript, featuring interactive mini-apps and open-source code.",
-        "description": "I built this portfolio to showcase my SaaS products, mobile apps and early learning projects in one fast, clean interface. Unlike my commercial platforms, the source code of this site is completely public on GitHub so anyone can inspect how I structure React components, handle typed data models, and manage internationalization across five languages without relying on heavy external UI frameworks.",
-        "traction": "Open-source showcase deployed on a Linux VPS with automated shell scripts.",
-        "logo": [
-          "/projects/portfolio_logo.jpg"
-        ],
-        "links": [
-          { "label": "View source on GitHub", "url": "https://github.com/gnocios/portfolio" }
-        ],
-        "stack": [
-          "Frontend: React, TypeScript, Vite",
-          "Internationalization: i18next supporting 5 languages (English, Spanish, French, Portuguese, Japanese)",
-          "Styling: Custom responsive CSS with clean component isolation",
-          "Deployment: Linux VPS, Nginx, automated bash deploy script"
-        ],
-        "highlights": [
-          "Full support for 5 languages with structured JSON locale files",
-          "Embedded playable React mini-games running inside the same SPA",
-          "Public GitHub repository serving as a live code sample alongside private SaaS projects",
-          "Zero-downtime deployment workflow using a custom bash script on a Linux VPS"
-        ],
-        "learnings": [
-          "Structuring scalable localization schemas for complex project descriptions and technical stacks",
-          "Balancing visual simplicity with rich technical detail so both recruiters and founders can scan projects quickly",
-          "Managing clean Git histories and selective repository exposure for public portfolios"
-        ]
-      },
-      {
-        "id": 6,
         "type": "Game",
         "title": "RPSLS",
         "tagline": "Rock paper scissors played like a fighting game, where every win is announced like a finishing move.",
@@ -241,7 +210,8 @@
           "/projects/rpsls_logo.png"
         ],
         "links": [
-          { "label": "Play the game", "url": "/games/rpsls" }
+          { "label": "Play the game", "url": "/games/rpsls" },
+          { "label": "View code", "url": "https://github.com/gnocios/rock-paper-scissors-lizard-spock" }
         ],
         "stack": [
           "Original (2021): HTML, CSS and vanilla JavaScript in a single file",
@@ -261,6 +231,48 @@
           "Moving the game rules into pure functions, separate from the interface, so the logic can be understood and tested on its own",
           "Handling timed rounds and sounds in React without reading stale state",
           "Going back to my own early code and improving it, which is the best way I found to measure how much I have learned"
+        ]
+      }
+    ]
+  },
+  "github": {
+    "title": "Open Source Code",
+    "items": [
+      {
+        "id": 1,
+        "title": "Portfolio",
+        "description": "This site: React and TypeScript with typed data models and i18n in five languages, no heavy UI frameworks.",
+        "stack": ["React", "TypeScript", "Vite", "i18next"],
+        "links": [
+          { "label": "View code", "url": "https://github.com/gnocios/portfolio" }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "RPSLS",
+        "description": "Rock paper scissors lizard Spock. Game rules as pure TypeScript functions, separate from the React interface.",
+        "stack": ["React", "TypeScript", "Vite"],
+        "links": [
+          { "label": "View code", "url": "https://github.com/gnocios/rock-paper-scissors-lizard-spock" },
+          { "label": "Play the game", "url": "/games/rpsls" }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Play Store Graphics Generator",
+        "description": "Generates localized Google Play store graphics (feature graphic and 8 screenshots) in 17 locales from JSON files, with RTL support for Arabic and Urdu and per-language fonts.",
+        "stack": ["Python", "Pillow", "NumPy", "i18n", "RTL"],
+        "links": [
+          { "label": "View code", "url": "https://github.com/gnocios/playstore-python-multilanguage-graphics-generator" }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Symbokus Sudoku Book Generator",
+        "description": "Generates printable sudoku books as PDF with themed symbol sets (Braille, Roman numerals, music notes, I Ching), difficulty levels and solutions. Includes the original PHP version, a rewritten PHP version and a Python version.",
+        "stack": ["Python", "ReportLab", "PHP", "mPDF"],
+        "links": [
+          { "label": "View code", "url": "https://github.com/gnocios/symbokus-sudokus-book-generator" }
         ]
       }
     ]

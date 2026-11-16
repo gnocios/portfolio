@@ -201,37 +201,6 @@
       },
       {
         "id": 5,
-        "type": "Webアプリ",
-        "title": "Portfolio",
-        "tagline": "ReactとTypeScriptで構築した多言語対応の開発者ポートフォリオ。インタラクティブなミニゲームとオープンソースコードを公開。",
-        "description": "自身のSaaS製品、モバイルアプリ、初期の学習プロジェクトを高速でクリーンなUIにまとめるために制作したポートフォリオです。商用の非公開プロジェクトとは異なり、このサイトのソースコードはGitHubで完全公開しており、重い外部UIフレームワークに頼らずにReactコンポーネントの設計、型安全なデータモデルの構築、5言語の多言語化をどのように実装しているかを誰でも確認できます。",
-        "traction": "Linux VPS上で自動化シェルスクリプトを用いて運用中のオープンソース作品。",
-        "logo": [
-          "/projects/portfolio_logo.jpg"
-        ],
-        "links": [
-          { "label": "GitHubでソースを見る", "url": "https://github.com/gnocios/portfolio" }
-        ],
-        "stack": [
-          "フロントエンド: React, TypeScript, Vite",
-          "多言語対応: i18next（英語、スペイン語、フランス語、ポルトガル語、日本語の5言語に対応）",
-          "スタイリング: コンポーネント単位で分離されたカスタムレスポンシブCSS",
-          "デプロイ: Linux VPS, Nginx, 自動デプロイ用Bashスクリプト"
-        ],
-        "highlights": [
-          "構造化されたJSONロケールファイルによる5言語の完全サポート",
-          "同一SPA内でそのまま遊べるReact製ミニゲームの組み込み",
-          "非公開のSaaSプロジェクトと並び、実際のコード品質を示すサンプルとして機能するGitHub公開リポジトリ",
-          "Linux VPS上のカスタムBashスクリプトによる迅速なデプロイフロー"
-        ],
-        "learnings": [
-          "複雑な技術スタックやプロジェクト解説に対応できるスケーラブルな多言語スキーマの設計",
-          "採用担当者やクライアントが素早く内容を把握できるよう、視覚的なシンプルさと技術的詳細のバランスを取ること",
-          "公開リポジトリにおけるクリーンなGit履歴の管理と公開範囲の適切な制御"
-        ]
-      },
-      {
-        "id": 6,
         "type": "ゲーム",
         "title": "RPSLS",
         "tagline": "格闘ゲームのように遊ぶじゃんけん。勝利のたびに必殺技のようなアナウンスが響き渡ります。",
@@ -241,7 +210,8 @@
           "/projects/rpsls_logo.png"
         ],
         "links": [
-          { "label": "ゲームをプレイ", "url": "/games/rpsls" }
+          { "label": "ゲームをプレイ", "url": "/games/rpsls" },
+          { "label": "コードを見る", "url": "https://github.com/gnocios/rock-paper-scissors-lizard-spock" }
         ],
         "stack": [
           "初期版 (2021): 単一ファイルによるHTML、CSS、Vanilla JavaScript",
@@ -261,6 +231,48 @@
           "ゲームルールをUIから切り離して純粋関数にまとめることで、ロジック単体での理解とテストを容易にしたこと",
           "Reactにおいて古い状態（stale state）を参照することなく、タイマー制御のラウンド進行と音声再生を適切に処理したこと",
           "過去の自分のコードに立ち返ってリファクタリングすることこそが、自身の成長を測る最良の方法であると実感したこと"
+        ]
+      }
+    ]
+  },
+  "github": {
+    "title": "オープンソースコード",
+    "items": [
+      {
+        "id": 1,
+        "title": "Portfolio",
+        "description": "このサイト：型付きデータモデルと5言語のi18nを備えたReactとTypeScript製で、重いUIフレームワークは使っていません。",
+        "stack": ["React", "TypeScript", "Vite", "i18next"],
+        "links": [
+          { "label": "コードを見る", "url": "https://github.com/gnocios/portfolio" }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "RPSLS",
+        "description": "グー・チョキ・パー・トカゲ・スポック。ゲームのルールをReactのUIから切り離し、純粋なTypeScript関数として実装しています。",
+        "stack": ["React", "TypeScript", "Vite"],
+        "links": [
+          { "label": "コードを見る", "url": "https://github.com/gnocios/rock-paper-scissors-lizard-spock" },
+          { "label": "ゲームをプレイ", "url": "/games/rpsls" }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Play Store Graphics Generator",
+        "description": "Google Playのストア掲載用画像（フィーチャーグラフィックとスクリーンショット8枚）を、JSONファイルから17ロケール分生成します。アラビア語とウルドゥー語のRTLに対応し、言語ごとにフォントを切り替えます。",
+        "stack": ["Python", "Pillow", "NumPy", "i18n", "RTL"],
+        "links": [
+          { "label": "コードを見る", "url": "https://github.com/gnocios/playstore-python-multilanguage-graphics-generator" }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Symbokus Sudoku Book Generator",
+        "description": "点字、ローマ数字、音符、易経などテーマ別のシンボルセット、難易度、解答付きで、印刷用の数独本をPDFで生成します。オリジナルのPHP版、書き直したPHP版、Python版を収録しています。",
+        "stack": ["Python", "ReportLab", "PHP", "mPDF"],
+        "links": [
+          { "label": "コードを見る", "url": "https://github.com/gnocios/symbokus-sudokus-book-generator" }
         ]
       }
     ]
